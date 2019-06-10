@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<meta name="author" content="hongye">
+
+
+
+<meta name="description" content="异步编程 (https://juejin.im/post/5900014fb123db260cbad520) 当使用异步编程时，在等待当前任务的响应返回之前，可以继续执行后续代码，即当前执行任务不会阻塞后续执行。 异步编程，不同于同步编程的请求-响应模式，其是一种事件驱动编程，请求调用函数或方法后，无需立即等待响应，可以继续执行其他任务，而之前任务响应返回后可以通过状态、通知和回调来通知调用者。异">
+<meta name="keywords" content="前端面试">
+<meta property="og:type" content="article">
+<meta property="og:title" content="面试新总结">
+<meta property="og:url" content="https://xupeihong.github.io/2017/06/20/面试新总结/index.html">
+<meta property="og:site_name" content="红叶知秋">
+<meta property="og:description" content="异步编程 (https://juejin.im/post/5900014fb123db260cbad520) 当使用异步编程时，在等待当前任务的响应返回之前，可以继续执行后续代码，即当前执行任务不会阻塞后续执行。 异步编程，不同于同步编程的请求-响应模式，其是一种事件驱动编程，请求调用函数或方法后，无需立即等待响应，可以继续执行其他任务，而之前任务响应返回后可以通过状态、通知和回调来通知调用者。异">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-06-09T16:08:30.152Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="面试新总结">
+<meta name="twitter:description" content="异步编程 (https://juejin.im/post/5900014fb123db260cbad520) 当使用异步编程时，在等待当前任务的响应返回之前，可以继续执行后续代码，即当前执行任务不会阻塞后续执行。 异步编程，不同于同步编程的请求-响应模式，其是一种事件驱动编程，请求调用函数或方法后，无需立即等待响应，可以继续执行其他任务，而之前任务响应返回后可以通过状态、通知和回调来通知调用者。异">
+
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="红叶知秋" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>面试新总结 | 红叶知秋</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: undefined
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head></html>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">hongye</a></h1>
+        </hgroup>
+
+        
+
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/categories/">分类</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="/xupeihongok@163.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="https://github.com/xupeihong" title="GitHub"></a>
+                            
+                                <a class="fa RSS" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker开源的应用容器引擎/">Docker开源的应用容器引擎</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6学习/">ES6学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown操作/">Markdown操作</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nodejs/">Nodejs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sublime-text操作/">Sublime text操作</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/atom操作/">atom操作</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/express-mysql/">express+mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/express-mysql百度新闻/">express+mysql百度新闻</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gitConfig/">gitConfig</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/glup-bower/">glup+bower</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/less/">less</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm命令/">npm命令</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webstrom操作/">webstrom操作</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端面试/">前端面试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正则/">正则</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/轮播/">轮播</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/项目管理/">项目管理</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注于前端</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">hongye</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">hongye</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/categories/">分类</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="/xupeihongok@163.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/xupeihong" title="GitHub"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
+</nav>
+      <div class="body-wrap"><article id="post-面试新总结" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/06/20/面试新总结/" class="article-date">
+      <time datetime="2017-06-20T09:31:59.000Z" itemprop="datePublished">2017-06-20</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      面试新总结
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/面试/">面试</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端面试/">前端面试</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="异步编程-https-juejin-im-post-5900014fb123db260cbad520"><a href="#异步编程-https-juejin-im-post-5900014fb123db260cbad520" class="headerlink" title="异步编程 (https://juejin.im/post/5900014fb123db260cbad520)"></a>异步编程 (<a href="https://juejin.im/post/5900014fb123db260cbad520" target="_blank" rel="noopener">https://juejin.im/post/5900014fb123db260cbad520</a>)</h1><ul>
+<li>当使用异步编程时，在等待当前任务的响应返回之前，可以继续执行后续代码，即当前执行任务不会阻塞后续执行。</li>
+<li>异步编程，不同于同步编程的请求-响应模式，其是一种事件驱动编程，请求调用函数或方法后，无需立即等待响应，可以继续执行其他任务，而之前任务响应返回后可以通过状态、通知和回调来通知调用者。<br>异步编程的方式：</li>
+<li>多线程</li>
+<li>javaScript单线程</li>
+<li>并行和并发：并行指同一时刻内多任务同时进行；并发指同一时间段内，多任务同时进行着，但是某一时刻，只有某一任务执行。</li>
+</ul>
+<p>堆栈和队列的区别：<br>堆：内存中某一未被阻止的区域，通常存储对象<br>栈：后进先出的顺序存储数据结构，通常存储函数参数和基本类型值变量<br>队列：先进先出顺序存储数据结构</p>
+<h1 id="关于vue和reactjs的比较（https-juejin-im-entry-590945a644d90400693f8e89）"><a href="#关于vue和reactjs的比较（https-juejin-im-entry-590945a644d90400693f8e89）" class="headerlink" title="关于vue和reactjs的比较（https://juejin.im/entry/590945a644d90400693f8e89）"></a>关于vue和reactjs的比较（<a href="https://juejin.im/entry/590945a644d90400693f8e89）" target="_blank" rel="noopener">https://juejin.im/entry/590945a644d90400693f8e89）</a></h1><ul>
+<li>vue更容易上手，vue的语法很自由，比如：<br>1.前期不需要认识复杂的生命周期函数，可能只关心mounted和vue.nextTick<br>2.熟悉的前端模板<br>3.父子组件间通信更灵活<br>4.slot可以大尺度的扩展组件<br>5.v-model，mvvm的方式处理表单更方便<br>6.官方的中文文档<a id="more"></a></li>
+<li><p>表单处理上vue要比react简单</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">Reactjs:</span><br><span class="line">class Demo extends React.Component&#123;</span><br><span class="line">  constructor(props)&#123;</span><br><span class="line">    super(props)</span><br><span class="line">    this.state=&#123;</span><br><span class="line">      inputA: &apos;&apos;,</span><br><span class="line">      inputB: &apos;&apos;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  _onChangeA(e)&#123;</span><br><span class="line">    this.setState(&#123;</span><br><span class="line">      inputA: e.target.value</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  _onChangeB(e)&#123;</span><br><span class="line">    this.setState(&#123;</span><br><span class="line">      inputB: e.target.value</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  render() &#123;</span><br><span class="line">    return (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">          &lt;input </span><br><span class="line">          onChange=&#123;this._onChangeA.bind(this)&#125; </span><br><span class="line">          value=&#123;this.state.inputA&#125;</span><br><span class="line">          /&gt;</span><br><span class="line">        &lt;input </span><br><span class="line">          onChange=&#123;this._onChangeB.bind(this)&#125; </span><br><span class="line">          value=&#123;this.state.inputB&#125;</span><br><span class="line">          /&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">ReactDOM.render(</span><br><span class="line">  &lt;Demo/&gt;,</span><br><span class="line">  document.getElementById(&apos;container&apos;)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">Vuejs：</span><br><span class="line">&lt;div id=&quot;demo&quot;&gt;</span><br><span class="line">    &lt;input </span><br><span class="line">      v-model=&quot;inputA&quot;</span><br><span class="line">      :value=&quot;inputA&quot;/&gt;</span><br><span class="line">    &lt;input </span><br><span class="line">      v-model=&quot;inputB&quot;</span><br><span class="line">      :value=&quot;inputB&quot;</span><br><span class="line">      /&gt;</span><br><span class="line">    &lt;button</span><br><span class="line">      @click=&quot;show&quot;</span><br><span class="line">      &gt;</span><br><span class="line">      show</span><br><span class="line">    &lt;/button&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">new Vue(&#123;</span><br><span class="line">    el: &apos;#demo&apos;,</span><br><span class="line">    data: &#123;</span><br><span class="line">      inputA: &apos;&apos;,</span><br><span class="line">      inputB: &apos;&apos;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>JSX vs Templates<br>开发者一开始不接受 JSX，是受到传统js拼接字符串模板的死板方式影响，其实 JSX 更灵活，它在逻辑能力表达上完爆模板，但也很容易写出凌乱的render函数，不如模板直观</p>
+</li>
+<li>组件通信<br>Vue 组件向上通信可通过触发事件，但在 Vue 2.0 废弃 dispatch，建议使用global event bus。而大多初学者以为 React 只能靠调用父组件的 callback，并且这种方式遇到组件层次太深的时候简直就是噩梦。其实 React 也可以通过事件通信来解决问题，只不过需要额外 coding 或调用第三方插件，而 Vue 的核心库已实现了该功能。React 拥有丰富的生态圈，很多事情是大家一起完成的。</li>
+<li>ref和props<br>父组件可通过 ref 定位子组件并调用它的 api，也可通过 props 传递数据，实现父组件通知子组件，ref 和 props 这两种方式将决定组件的形态。在实际开发中，可能 Vue 先入为主，ref 也用的比较多，因为它在组件封装力度上确实有优势， api 可让组件更抽象、更关注自身的功能，不受外界影响。而后来转到 React 几乎都是用 props 通信，一开始还以为是 React 的问题，甚至还得出了这样的结论：React 组件像是 UI 组件，Vue 组件更接近对象。直到最近看了 Facebook 文档，才发现另有蹊跷。先看看之前用 Vue ，我是如何去创建一个列表（List）组件，并实现列表数据的新增和删除，以及调用方式。</li>
+</ul>
+<h1 id="xhtml和html的区别："><a href="#xhtml和html的区别：" class="headerlink" title="xhtml和html的区别："></a>xhtml和html的区别：</h1><ul>
+<li>XHtml是更严格更纯净的html代码</li>
+<li>XHtml指可扩展超文本标签语言</li>
+<li>XHtml的目标是取代html</li>
+<li>XHtml与html4.01几乎是相同的</li>
+<li>XHtml元素必须被正确的嵌套</li>
+<li>XHtml元素必须被关闭</li>
+<li>XHtml元素必须拥有根元素</li>
+<li>标签名必须用小写字母</li>
+</ul>
+<h1 id="主流浏览器的内核："><a href="#主流浏览器的内核：" class="headerlink" title="主流浏览器的内核："></a>主流浏览器的内核：</h1><p>Chrome浏览器（Webkit内核）、IE浏览器、fireFox浏览器（Gecko/Firefox内核）、Microsoft edge（Trident/IE内核）、Safari（Webkit内核）、Opera（Presto内核）</p>
+<h1 id="清除浮动的几种方式和-各自的优缺点"><a href="#清除浮动的几种方式和-各自的优缺点" class="headerlink" title="清除浮动的几种方式和 各自的优缺点"></a>清除浮动的几种方式和 各自的优缺点</h1><p>1.父级div定义height<br>原理：父级div手动定义height，就解决了父级div无法自动获取到高度的问题<br>优点：简单，代码少，容易掌握<br>缺点：只适合高度固定的布局，要给出精确的高度，如果高度和父级div不一样时，会产生问题<br>建议：不推荐使用，只建议高度固定的布局时使用<br>2.结尾处加空div标签clear:both<br>原理：添加一个空div，利用css提高的clear:both清除浮动，让父级div能自动获取到高度<br>优点：简单，代码少，浏览器支持好，不容易出现怪问题<br>缺点：不少初学者不理解原理；如果页面浮动布局多，就要增加很多空div，让人感觉很不爽<br>建议：不推荐使用，但此方法是以前主要使用的一种清除浮动方法<br>3.父级div定义伪类:after和zoom<br>原理：IE8以上和非IE浏览器才支持:after，原理和方法2有点类似，zoom(IE专有属性)可解决ie6,ie7浮动问题<br>优点：浏览器支持好，不容易出现怪问题（目前：大型网站都有使用，如：腾迅，网易，新浪等等）<br>缺点：代码多，不少初学者不理解原理，要两句代码结合使用，才能让主流浏览器都支持<br>建议：推荐使用，建议定义公共类，以减少CSS代码<br>4.父级div定义overflow:hidden<br>原理：必须定义width或zoom:1，同时不能定义height，使用overflow:hidden时，浏览器会自动检查浮动区域的高度<br>优点：简单，代码少，浏览器支持好<br>缺点：不能和position配合使用，因为超出的尺寸的会被隐藏<br>建议：只推荐没有使用position或对overflow:hidden理解比较深的朋友使用<br>5.父级div定义overflow:auto<br>原理：必须定义width或zoom:1，同时不能定义height，使用overflow:auto时，浏览器会自动检查浮动区域的高度<br>优点：简单，代码少，浏览器支持好<br>缺点：内部宽高超过父级div时，会出现滚动条。<br>建议：不推荐使用，如果你需要出现滚动条或者确保你的代码不会出现滚动条就使用吧。<br>6.父级div也一起浮动<br>原理：所有代码一起浮动，就变成了一个整体<br>优点：没有优点<br>缺点：会产生新的浮动问题。<br>建议：不推荐使用，只作了解。<br>7.父级div定义display:table<br>原理：将div属性变成表格<br>优点：没有优点<br>缺点：会产生新的未知问题<br>建议：不推荐使用，只作了解<br>8.结尾处加br标签clear:both<br>原理：父级div定义zoom:1来解决IE浮动问题，结尾处加br标签clear:both<br>建议：不推荐使用，只作了解</p>
+<h1 id="Ajax请求时如何解析json数据"><a href="#Ajax请求时如何解析json数据" class="headerlink" title="Ajax请求时如何解析json数据"></a>Ajax请求时如何解析json数据</h1><p>1.JSON提供了json.js包，下载<a href="http://www.json.org/json.js" target="_blank" rel="noopener">http://www.json.org/json.js</a> 后，将其引入然后就可以简单的使用object.toJSONString()转换成JSON数据。<br>2.可以使用eval来转换JSON字符到Object<br>3.使用parseJSON()方法(JQ)<br>JSON.parse()之可以解析json格式的数据，并且会对要解析的字符串进行格式检查，如果格式不正确则不进行解析，而eval()则可以解析任何字符串，eval是不安全的。</p>
+<h1 id="闭包是什么？有什么特性？为什么使用闭包"><a href="#闭包是什么？有什么特性？为什么使用闭包" class="headerlink" title="闭包是什么？有什么特性？为什么使用闭包"></a>闭包是什么？有什么特性？为什么使用闭包</h1><p>闭包是指有权访问另一个函数作用域中的变量的函数，创建闭包的常见方法是在一个函数内部创建另一个函数。闭包会携带包含它的函数的作用域，因此会比其他函数占用更多的内存，过渡使用闭包可能会导致内存占用过多。<br>作用：一个是前面提到的可以读取函数内部的变量，另一个就是让这些变量的值始终保持在内存中。</p>
+<h1 id="如何阻止事件冒泡和默认事件？"><a href="#如何阻止事件冒泡和默认事件？" class="headerlink" title="如何阻止事件冒泡和默认事件？"></a>如何阻止事件冒泡和默认事件？</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">//功能:停止事件冒泡  </span><br><span class="line">function stopBubble(e) &#123;</span><br><span class="line">    // 如果提供了事件对象，则这是一个非IE浏览器</span><br><span class="line">    if ( e &amp;&amp; e.stopPropagation ) &#123;</span><br><span class="line">        // 因此它支持W3C的stopPropagation()方法 </span><br><span class="line">        e.stopPropagation();</span><br><span class="line">    &#125; else &#123; </span><br><span class="line">        // 否则，我们需要使用IE的方式来取消事件冒泡</span><br><span class="line">        window.event.cancelBubble = true;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//功能：阻止事件默认行为</span><br><span class="line">function stopDefault( e ) &#123;</span><br><span class="line">     // 阻止默认浏览器动作(W3C)</span><br><span class="line">     if ( e &amp;&amp; e.preventDefault ) &#123;</span><br><span class="line">         e.preventDefault();</span><br><span class="line">     &#125; else &#123;</span><br><span class="line">        // IE中阻止函数器默认动作的方式</span><br><span class="line">        window.event.returnValue = false;</span><br><span class="line">    &#125;</span><br><span class="line">    return false;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="解释jsonp的原理，以及为什么不是真正的ajax"><a href="#解释jsonp的原理，以及为什么不是真正的ajax" class="headerlink" title="解释jsonp的原理，以及为什么不是真正的ajax"></a>解释jsonp的原理，以及为什么不是真正的ajax</h1><p>JSON是一种数据交换格式，而JSONP是一种依靠开发人员的聪明才智创造出的一种非官方跨域数据交互协议。JSON是地下党们用来书写和交换情报的“暗号”<br><a href="http://blog.csdn.net/superhosts/article/details/9057301Ajax直接请求普通文件存在跨域无权限访问的问题，Web页面上调用js文件时则不受是否跨域的影响（不仅如此，我们还发现凡是拥有&quot;src&quot;这个属性的标签都拥有跨域的能力，比如script、img、iframe），当前阶段如果想通过纯web端（ActiveX控件、服务端代理、属于未来的HTML5之Websocket等方式不算）跨域访问数据就只有一种可能，那就是在远程服务器上设法把数据装进js格式的文件里，供客户端调用和进一步处理。一种叫做JSON的纯字符数据格式可以简洁的描述复杂数据，更妙的是JSON还被js原生支持。web客户端通过与调用脚本一模一样的方式，来调用跨域服务器上动态生成的js格式文件（一般以JSON为后缀），显而易见，服务器之所以要动态生成JSON文件，目的就在于把客户端需要的数据装入进去。为了便于客户端使用数据，逐渐形成了一种非正式传输协议，人们把它称作JSONP，该协议的一个要点就是允许用户传递一个callback参数给服务端，然后服务端返回数据时会将这个callback参数作为函数名来包裹住JSON数据，这样客户端就可以随意定制自己的函数来自动处理返回数据了。" target="_blank" rel="noopener">http://blog.csdn.net/superhosts/article/details/9057301Ajax直接请求普通文件存在跨域无权限访问的问题，Web页面上调用js文件时则不受是否跨域的影响（不仅如此，我们还发现凡是拥有&quot;src&quot;这个属性的标签都拥有跨域的能力，比如script、img、iframe），当前阶段如果想通过纯web端（ActiveX控件、服务端代理、属于未来的HTML5之Websocket等方式不算）跨域访问数据就只有一种可能，那就是在远程服务器上设法把数据装进js格式的文件里，供客户端调用和进一步处理。一种叫做JSON的纯字符数据格式可以简洁的描述复杂数据，更妙的是JSON还被js原生支持。web客户端通过与调用脚本一模一样的方式，来调用跨域服务器上动态生成的js格式文件（一般以JSON为后缀），显而易见，服务器之所以要动态生成JSON文件，目的就在于把客户端需要的数据装入进去。为了便于客户端使用数据，逐渐形成了一种非正式传输协议，人们把它称作JSONP，该协议的一个要点就是允许用户传递一个callback参数给服务端，然后服务端返回数据时会将这个callback参数作为函数名来包裹住JSON数据，这样客户端就可以随意定制自己的函数来自动处理返回数据了。</a><br>1、ajax和jsonp这两种技术在调用方式上“看起来”很像，目的也一样，都是请求一个url，然后把服务器返回的数据进行处理，因此jquery和ext等框架都把jsonp作为ajax的一种形式进行了封装；<br>2、但ajax和jsonp其实本质上是不同的东西。ajax的核心是通过XmlHttpRequest获取非本页内容，而jsonp的核心则是动态添加script标签来调用服务器提供的js脚本。<br>3、所以说，其实ajax与jsonp的区别不在于是否跨域，ajax通过服务端代理一样可以实现跨域，jsonp本身也不排斥同域的数据的获取。<br>4、还有就是，jsonp是一种方式或者说非强制性协议，如同ajax一样，它也不一定非要用json格式来传递数据，如果你愿意，字符串都行，只不过这样不利于用jsonp提供公开服务。<br>总而言之，jsonp不是ajax的一个特例，哪怕jquery等巨头把jsonp封装进了ajax，也不能改变着一点！</p>
+<h1 id="数组去重的方法"><a href="#数组去重的方法" class="headerlink" title="数组去重的方法"></a>数组去重的方法</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Array.prototype.removeDup3 = function()&#123;</span><br><span class="line">                var result = [];</span><br><span class="line">                var obj = &#123;&#125;;</span><br><span class="line">                for(var i = 0; i &lt; this.length; i++)&#123;</span><br><span class="line">                    if(!obj[this[i]])&#123;</span><br><span class="line">                        result.push(this[i]);</span><br><span class="line">                        obj[this[i]] = 1;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                return result;</span><br><span class="line">            &#125;</span><br><span class="line">var arr = [1,2,2,5,2,&quot;测试&quot;,&quot;test&quot;,&quot;测试&quot;,&quot;test&quot;];</span><br><span class="line">console.log(arr.removeDup3());</span><br></pre></td></tr></table></figure>
+<h1 id="升序排序"><a href="#升序排序" class="headerlink" title="升序排序"></a>升序排序</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">var quickSort = function(arr) &#123;</span><br><span class="line">            　　if (arr.length &lt;= 1) &#123; return arr; &#125;</span><br><span class="line">            　　var pivotIndex = Math.floor(arr.length / 2);</span><br><span class="line">            　　var pivot = arr.splice(pivotIndex, 1)[0];</span><br><span class="line">            　　var left = [];</span><br><span class="line">            　　var right = [];</span><br><span class="line">            　　for (var i = 0; i &lt; arr.length; i++)&#123;</span><br><span class="line">            　　　　if (arr[i] &lt; pivot) &#123;</span><br><span class="line">            　　　　　　left.push(arr[i]);</span><br><span class="line">            　　　　&#125; else &#123;</span><br><span class="line">            　　　　　　right.push(arr[i]);</span><br><span class="line">            　　　　&#125;</span><br><span class="line">            　　&#125;</span><br><span class="line">            　　return quickSort(left).concat([pivot], quickSort(right));</span><br><span class="line">            &#125;;</span><br><span class="line">var arr1 = [1,4,65,21,2,222,111];</span><br><span class="line">console.log(quickSort(arr1));</span><br></pre></td></tr></table></figure>
+<h1 id="排序后插入数据"><a href="#排序后插入数据" class="headerlink" title="排序后插入数据"></a>排序后插入数据</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">var insert=function (arr,item)&#123;</span><br><span class="line">    var mark;</span><br><span class="line">    for (var i = 0; i &lt; arr.length; i++)&#123;</span><br><span class="line">        if(item&gt;=arr[i]&amp;&amp;item&lt;=arr[i+1])&#123;</span><br><span class="line">            mark=i;</span><br><span class="line">            break; </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    arr.splice(mark+1, 0,item);</span><br><span class="line">    return  arr;</span><br><span class="line">&#125;</span><br><span class="line">var arr1 = [1,4,9,65];</span><br><span class="line">console.log(insert(arr1,9));</span><br></pre></td></tr></table></figure>
+<h1 id="cssHack如何书写"><a href="#cssHack如何书写" class="headerlink" title="cssHack如何书写"></a>cssHack如何书写</h1><p>1.Css选择器Hack：在Css选择器前加上一些只有某些特定浏览器才能识别的前缀Hack(<em>html </em>前缀只对IE6生效，<em>+html </em>+前缀只对IE6/7 )<br>优点：全面，各种Hack都有，清理代码易认<br>缺点：选择器名称不易记，代码量大，重写选择器，带来大量的重复属性。<br>2.Css属性Hack:如： 属性前缀区别<br>-moz-transform:<br>-wekit-transform:<br>-o-transform:<br>-ms-transform:<br>transform:<br>优点：易记，代码少：<br>缺点：不全面，只有少数属性有。<br>3.条件注释法<br>  用浏览器条件注释法，对浏览器兼容问题比较多时用，两种<br>一种是不同版本的浏览器载入不同的css样式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--[if IE 8]&gt;</span><br><span class="line">  &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;ie8.cdd&quot;&gt;</span><br><span class="line">&lt;![endif]--&gt;</span><br></pre></td></tr></table></figure></p>
+<p>另一种是对html或body挂载不同的Css<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--[if lt IE 7 ]&gt;&lt;html class=&quot;ie6&quot; lang=&quot;zh-cn&quot;&gt;&lt;![endif]--&gt;</span><br><span class="line">&lt;!--[if IE 7 ]&gt;&lt;html class=&quot;ie7&quot; lang=&quot;zh-cn&quot;&gt;&lt;![endif]--&gt;</span><br></pre></td></tr></table></figure></p>
+<p>然后在样式里各种选择器加浏览器前缀<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">.ie9 .test&#123;color:yellow;&#125;</span><br><span class="line">.ie8 .test&#123;color:red;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>优点：安全；向后兼容；易维护<br>缺点：用不好会增加http请求；代码多；<br>4.Js浏览器探测，用js判断浏览器版本，给需要hack的部分添加对应的class<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">If（$.browser.msie &amp;&amp; $.browser.version = 6浏览器版本为ie6）&#123;</span><br><span class="line">$(‘div’).addClass(‘ie6’);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>优点：全面；易维护，可读性高；<br>缺点：占资源；代码量大；<br>总结：本人使用最多的是选择器属性hack,但有代码洁癖的我觉得条件注释法<br>中的给body和html根据版本挂载对应的class;</p>
+<h1 id="canvas和svg的区别"><a href="#canvas和svg的区别" class="headerlink" title="canvas和svg的区别"></a>canvas和svg的区别</h1><p>SVG是一种使用xml描述的2D的语言<br>Canvas通过javascript来绘制的2D图形<br>canvas是逐像素进行渲染的</p>
+<p>canvas和svg的比较：</p>
+<h2 id="Canvas"><a href="#Canvas" class="headerlink" title="Canvas"></a>Canvas</h2><ul>
+<li>依赖分辨率</li>
+<li>不支持事件处理器</li>
+<li>弱的文本渲染能力</li>
+<li>能够以 .png 或 .jpg 格式保存结果图像</li>
+<li>最适合图像密集型的游戏，其中的许多对象会被频繁重绘<h2 id="SVG"><a href="#SVG" class="headerlink" title="SVG"></a>SVG</h2></li>
+<li>不依赖分辨率</li>
+<li>支持事件处理器</li>
+<li>最适合带有大型渲染区域的应用程序（比如谷歌地图）</li>
+<li>复杂度高会减慢渲染速度（任何过度使用 DOM 的应用都不快）</li>
+<li>不适合游戏应用</li>
+</ul>
+<h1 id="常见的网页图像格式有ico、jpg、png、gif说说他们各自应用场景；"><a href="#常见的网页图像格式有ico、jpg、png、gif说说他们各自应用场景；" class="headerlink" title="常见的网页图像格式有ico、jpg、png、gif说说他们各自应用场景；"></a>常见的网页图像格式有ico、jpg、png、gif说说他们各自应用场景；</h1><p>Ico:windows图标图标文件，前端用到的是favicon.ico,收藏夹的图标文件，网站的ico<br>Jpg:非透明图片，有损压缩，将图片放大后有明显的马赛克，但压缩率高，不需要透明度的图片，可使用。<br>Png:压缩率没有jpg/jpeg高，但清晰<br>Gif:动图，支持动画效果，支持透明度</p>
+<h1 id="如何触发页面的-reflow-repaint"><a href="#如何触发页面的-reflow-repaint" class="headerlink" title="如何触发页面的 reflow,repaint"></a>如何触发页面的 reflow,repaint</h1><p>Repaint（重绘），元素的外观被改变，且在没有改变布局的情况下发生的，如改变：outline,visibility,background-color,等不影响到dom结构测渲染<br>Reflow(渲染)，于repaint区别他会影响到dom的结构渲染，同时也会触发repaint,他会改变本身与所有父辈元素，这种开销是非常昂贵的，导致性能下降是必然的，页面元素越多越明显。</p>
+<h3 id="如何触发："><a href="#如何触发：" class="headerlink" title="如何触发："></a>如何触发：</h3><ul>
+<li>dom元素的添加修改删除</li>
+<li>仅修改dom元素的字体颜色</li>
+<li>应用新的样式或修改任何影响元素外观的属性</li>
+<li>resize浏览器窗口滚动页面<h3 id="如何避免："><a href="#如何避免：" class="headerlink" title="如何避免："></a>如何避免：</h3></li>
+<li>先将元素从document中删除，完成修改后再把元素放回原位置</li>
+<li>将元素的display设置为none，完成修改后再把display修改为原来的值</li>
+<li>如果需要创建多个dom节点，可以使用documentFragment创建完后一次性的加入document</li>
+<li>集中修改样式</li>
+</ul>
+<h1 id="请编写一个JavaScript函数-parseQueryString，它的用途是把URL参数解析为一个对象"><a href="#请编写一个JavaScript函数-parseQueryString，它的用途是把URL参数解析为一个对象" class="headerlink" title="请编写一个JavaScript函数 parseQueryString，它的用途是把URL参数解析为一个对象"></a>请编写一个JavaScript函数 parseQueryString，它的用途是把URL参数解析为一个对象</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">//正则表达式</span><br><span class="line">var parseQueryString = function (url) &#123;</span><br><span class="line">   var reg = /([^\?\=\&amp;]+)\=([^\?\=\&amp;]*)/g;</span><br><span class="line">   var obj = &#123;&#125;;</span><br><span class="line">   while (reg.exec (url)) &#123;</span><br><span class="line">       obj[RegExp.$1] = RegExp.$2;</span><br><span class="line">   &#125;</span><br><span class="line">   return obj;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//字符分割</span><br><span class="line">function parseQueryString(url) &#123;  </span><br><span class="line">    var str = url.split(&quot;?&quot;)[1], items = str.split(&quot;&amp;&quot;);  </span><br><span class="line">    var result = &#123;&#125;;  </span><br><span class="line">    var arr;  </span><br><span class="line">    for (var i = 0; i &lt; items.length; i++) &#123;  </span><br><span class="line">        arr = items[i].split(&quot;=&quot;);  </span><br><span class="line">        result[arr[0]] = arr[1];  </span><br><span class="line">    &#125;  </span><br><span class="line">    return result;  </span><br><span class="line">&#125;</span><br><span class="line">var url = &quot;http://wiatcmdax.cn/index.php?key0=0&amp;key1=1&amp;key2=2&quot;;</span><br><span class="line">var obj = parseQueryString (url);</span><br><span class="line"></span><br><span class="line">优缺点：正则表达式的代码更简洁，但是需要记住复杂的正则表达式，字符分割虽然代码稍微长一些，但更易于理解易于记住。如果是首次分析趋向于字符分割，如果是后面优化，我趋向于使代码简洁干练，然后重复利用。</span><br></pre></td></tr></table></figure>
+<h1 id="提高网站的前端性能，你会关注那些方面？"><a href="#提高网站的前端性能，你会关注那些方面？" class="headerlink" title="提高网站的前端性能，你会关注那些方面？"></a>提高网站的前端性能，你会关注那些方面？</h1><p>一、页面级优化<br>1.减少 HTTP请求数<br>(1). 从设计实现层面简化页面<br>(2). 合理设置 HTTP缓存<br>(3). 资源合并与压缩<br>(4). CSS Sprites<br>(5). Inline Images<br>(6). Lazy Load Images<br>2.将外部脚本置底（将脚本内容在页面信息内容加载后再加载）<br>3.异步执行 inline脚本(其实原理和上面是一样，保证脚本在页面内容后面加载。)<br>4.Lazy Load Javascript（只有在需要加载的时候加载，在一般情况下并不加载信息内容。）<br>5.将 CSS放在 HEAD中<br>6.异步请求 Callback（就是将一些行为样式提取出来，慢慢的加载信息的内容）<br>7.减少不必要的 HTTP跳转<br>8.避免重复的资源请求<br>二、代码级优化<br>1.Javascript<br>2.CSS选择符<br>但实际上浏览器对选择符的解析是从右往左进行的<br>3.HTML<br>4.Image压缩</p>
+<h1 id="判断浏览器的版本"><a href="#判断浏览器的版本" class="headerlink" title="判断浏览器的版本"></a>判断浏览器的版本</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">function myBrowser()&#123;</span><br><span class="line">    var userAgent = navigator.userAgent; //取得浏览器的userAgent字符串</span><br><span class="line">    var isOpera = userAgent.indexOf(&quot;Opera&quot;) &gt; -1;</span><br><span class="line">    if (isOpera) &#123;</span><br><span class="line">        return &quot;Opera&quot;</span><br><span class="line">    &#125;; //判断是否Opera浏览器</span><br><span class="line">    if (userAgent.indexOf(&quot;Firefox&quot;) &gt; -1) &#123;</span><br><span class="line">        return &quot;FF&quot;;</span><br><span class="line">    &#125; //判断是否Firefox浏览器</span><br><span class="line">    if (userAgent.indexOf(&quot;Chrome&quot;) &gt; -1)&#123;</span><br><span class="line">  return &quot;Chrome&quot;;</span><br><span class="line"> &#125;</span><br><span class="line">    if (userAgent.indexOf(&quot;Safari&quot;) &gt; -1) &#123;</span><br><span class="line">        return &quot;Safari&quot;;</span><br><span class="line">    &#125; //判断是否Safari浏览器</span><br><span class="line">    if (userAgent.indexOf(&quot;compatible&quot;) &gt; -1 &amp;&amp; userAgent.indexOf(&quot;MSIE&quot;) &gt; -1 &amp;&amp; !isOpera) &#123;</span><br><span class="line">        return &quot;IE&quot;;</span><br><span class="line">    &#125;; //判断是否IE浏览器</span><br><span class="line">&#125;</span><br><span class="line">//以下是调用上面的函数</span><br><span class="line">var mb = myBrowser();</span><br><span class="line">if (&quot;IE&quot; == mb) &#123;</span><br><span class="line">    alert(&quot;我是 IE&quot;);</span><br><span class="line">&#125;</span><br><span class="line">if (&quot;FF&quot; == mb) &#123;</span><br><span class="line">    alert(&quot;我是 Firefox&quot;);</span><br><span class="line">&#125;</span><br><span class="line">if (&quot;Chrome&quot; == mb) &#123;</span><br><span class="line">    alert(&quot;我是 Chrome&quot;);</span><br><span class="line">&#125;</span><br><span class="line">if (&quot;Opera&quot; == mb) &#123;</span><br><span class="line">    alert(&quot;我是 Opera&quot;);</span><br><span class="line">&#125;</span><br><span class="line">if (&quot;Safari&quot; == mb) &#123;</span><br><span class="line">    alert(&quot;我是 Safari&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="列举html中至少三个实体"><a href="#列举html中至少三个实体" class="headerlink" title="列举html中至少三个实体"></a>列举html中至少三个实体</h1><p>&amp;amp、&amp;nbsp 、&amp;lt、&amp;gt、&amp;reg、&amp;copy</p>
+<h1 id="table-layout、border-collapse有何用途？"><a href="#table-layout、border-collapse有何用途？" class="headerlink" title="table-layout、border-collapse有何用途？"></a>table-layout、border-collapse有何用途？</h1><ul>
+<li>①table-layout：设置表格是否自动调整宽高</li>
+<li>②border-collapse：表格与单元格及单元格间的边框是否融合在一起。</li>
+</ul>
+<h1 id="浏览器经常遇到的兼容性问题"><a href="#浏览器经常遇到的兼容性问题" class="headerlink" title="浏览器经常遇到的兼容性问题"></a>浏览器经常遇到的兼容性问题</h1><p><a href="http://www.jianshu.com/p/f971aae86f4d" target="_blank" rel="noopener">http://www.jianshu.com/p/f971aae86f4d</a></p>
+<h1 id="xhtml和html有什么区别"><a href="#xhtml和html有什么区别" class="headerlink" title="xhtml和html有什么区别"></a>xhtml和html有什么区别</h1><p>①HTML是一种基本的WEB网页设计语言,XHTML是一个基于XML的置标语言<br>②最主要的不同：<br>XHTML 元素必须被正确地嵌套。<br>XHTML 元素必须被关闭。<br>标签名必须用小写字母。<br>XHTML 文档必须拥有根元素。</p>
+<h1 id="iframe有哪些缺点？"><a href="#iframe有哪些缺点？" class="headerlink" title="iframe有哪些缺点？"></a>iframe有哪些缺点？</h1><p>①iframe会阻塞主页面的Onload事件，搜索引擎的检索程序无法解读这种页面，不利于SEO<br>②iframe和主页面共享连接池，而浏览器对相同域的连接有限制，所以会影响页面的并行加载。<br>使用iframe之前需要考虑这两个缺点。如果需要使用iframe，最好是通过javascript动态给iframe添加src属性值，这样可以绕开以上两个问题。</p>
+<h1 id="如何在页面上实现一个圆形的可点击区域？"><a href="#如何在页面上实现一个圆形的可点击区域？" class="headerlink" title="如何在页面上实现一个圆形的可点击区域？"></a>如何在页面上实现一个圆形的可点击区域？</h1><p>①map+area或者svg<br>②border-radius<br>③纯js实现 需要求一个点在不在圆上简单算法、获取鼠标坐标等等</p>
+<h1 id="Html5与html4相比，各有何优缺点？-怎样处理html5新标签的兼容性问题？"><a href="#Html5与html4相比，各有何优缺点？-怎样处理html5新标签的兼容性问题？" class="headerlink" title="Html5与html4相比，各有何优缺点？ 怎样处理html5新标签的兼容性问题？"></a>Html5与html4相比，各有何优缺点？ 怎样处理html5新标签的兼容性问题？</h1><p>1、HTML5仍然是一个制定中的标准<br>这第一个也是非常重要的一个区别，虽然与HTML4相比HTML5很酷，很规范，但是这些都无法改变HTML5依然是一个制定中的标准的事实。HTML5仍然处在初级阶段，预期会发生很多变化。你必须把这些因素考虑进来，因为这个你需要不停的更新升级你的网站，这是很不方便的。这也是为什么到目前为止，最好在产品里使用HTML4，只在实验里使用HTML5的原因。HTML4也许已经超过10岁了，但是它作为正式标准的事实一直没变。<br>2、简化的语法<br>更简单的doctype声明是HTML5里众多新特征之一。现在只需要写就好了。HTML5的语法兼容HTML4和XHTML1，但不兼容SGML。<br>3、新的canvas标记代替flash<br>Flash给Web开发者带来了很多麻烦，因为想要在网页上播放Flash需要一堆代码和插件。canvas标签使得开发者只要使用一个标签就能和用户产生UI交互。虽然目前canvas标签还不能实现Flash的所有功能，但是相信很快就会颠覆并代替flash。<br>4、新的header与footer标记<br>HTML5的设计是要更好的描绘网站的解剖结构。这就是为什么一些像header和 footer这样的新标记会出现，它们是专门为标志网站的这些部分设计的。用来明确表示网页的结构。<br>5、新的section与article与标记<br>跟header与footer标记相似，HTML5中引入的新的 section和 article标记可以让开发人员更好的标注页面上的这些区域。有利于清晰化网页的结构，更有利于SEO。</p>
+<ol>
+<li>新的menu 和figure标记<br>新的 menu可以被用于创建传统的菜单，也可以用于工具栏和上下文菜单。新的 figure标签使得网页文字和图片的排版更专业。</li>
+<li>新的audio 和 video标记<br>新的audio 和video 标记可能是HTML5中增加的最有用处的两个东西了。正如标记名称，它们是用来嵌入音频和视频文件的。<br>除此之外还增加了新的多媒体的标记和属性，例如track，它是用来提供跟踪视频的文字信息的。</li>
+<li>表单的全新水平<br>新的 form和forminput标记对原有的表单元素进行的全新的修改，添加了很多的新属性，也修改了很多属性。如果你经常的开发表单，建议花时间更详细的研究一下。</li>
+<li>不再使用b和 font标记<br>官方说明是这些标记可以通过CCS来做更好的处理，也许我们以后会习惯这种方法。</li>
+<li>不再使用frame, center, big标记<br>有了更好的标记能实现他们的功能。</li>
+</ol>
+<p>兼容性问题<br>IE8/IE7/IE6支持通过document.createElement方法产生的标签，可以利用这一特性让这些浏览器支持HTML5新标签，浏览器支持新标签后，还需要添加标签默认的样式。当然也可以直接使用成熟的框架、比如html5shim。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--[if lt IE 9]&gt;</span><br><span class="line">&lt;script&gt; src=&quot;http://html5shim.googlecode.com/svn/trunk/html5.js&quot;&lt;/script&gt;</span><br><span class="line">&lt;![endif]--&gt;</span><br></pre></td></tr></table></figure></p>
+<h1 id="String-match与RegExp-exec有何区别？"><a href="#String-match与RegExp-exec有何区别？" class="headerlink" title="String.match与RegExp.exec有何区别？"></a>String.match与RegExp.exec有何区别？</h1><p>match只会返回没有分组的全部匹配结果或者有分组的第一次匹配结果；<br>而exec可以利用循环返回全部匹配结果。</p>
+<h1 id="简述COOKIE。在JS中如何操作Cookie"><a href="#简述COOKIE。在JS中如何操作Cookie" class="headerlink" title="简述COOKIE。在JS中如何操作Cookie?"></a>简述COOKIE。在JS中如何操作Cookie?</h1><h2 id="添加一个cookie"><a href="#添加一个cookie" class="headerlink" title="添加一个cookie"></a>添加一个cookie</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;script language=&quot;javascript&apos; type=&quot;text/javascript&quot;&gt;</span><br><span class="line">function   addCookie(name,value,expiresHours)&#123;</span><br><span class="line">var  cookieString=name+&quot;=&quot;+escape(value);</span><br><span class="line">//判断是否设置过期时间,0代表关闭浏览器时失效</span><br><span class="line">if(expiresHours&gt;0)&#123;</span><br><span class="line">var  date=newDate();</span><br><span class="line">date.setTime(date.getTime+expiresHours*3600*1000);</span><br><span class="line">cookieString=cookieString+&quot;; expires=&quot;+date.toGMTString();</span><br><span class="line">&#125;</span><br><span class="line">document.cookie=cookieString;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="根据指定名称的Cookie修改Cookie的值"><a href="#根据指定名称的Cookie修改Cookie的值" class="headerlink" title="根据指定名称的Cookie修改Cookie的值"></a>根据指定名称的Cookie修改Cookie的值</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;script language=&quot;javascript&quot;  type=&quot;text/javascript&quot;&gt;</span><br><span class="line">function  editCookie(name,value,expiresHours)&#123;</span><br><span class="line">var  cookieString=name+&quot;=&quot;+escape(value);</span><br><span class="line">//判断是否设置过期时间,0代表关闭浏览器时失效</span><br><span class="line">if(expiresHours&gt;0)&#123;</span><br><span class="line">var  date=newDate();</span><br><span class="line">date.setTime(date.getTime+expiresHours*3600*1000);//单位是多少小时后失效</span><br><span class="line">cookieString=cookieString+&quot;; expires=&quot;+date.toGMTString();</span><br><span class="line">&#125;</span><br><span class="line">document.cookie=cookieString;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="获取指定名称的cookie值"><a href="#获取指定名称的cookie值" class="headerlink" title="获取指定名称的cookie值"></a>获取指定名称的cookie值</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;script language=&quot;javascript&quot; type=&quot;text/javascript&quot;&gt;</span><br><span class="line">function   getCookie(name)&#123;</span><br><span class="line">var   strCookie=document.cookie;</span><br><span class="line">var   arrCookie=strCookie.split(&quot;; &quot;);</span><br><span class="line">for(var  i=0;i&lt;arrCookie.length;i++)&#123;</span><br><span class="line">var  arr=arrCookie[i].split(&quot;=&quot;);</span><br><span class="line">if(arr[0]==name)&#123;</span><br><span class="line">returnunescape(arr[1]);</span><br><span class="line">&#125;else&#123;</span><br><span class="line">return&quot;&quot;;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="删除指定名称的cookie"><a href="#删除指定名称的cookie" class="headerlink" title="删除指定名称的cookie"></a>删除指定名称的cookie</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;script language=&quot;javascript&quot;  type=&quot;text/javascript&quot;&gt;</span><br><span class="line">function   deleteCookie(name)&#123;</span><br><span class="line">var  date=newDate();</span><br><span class="line">date.setTime(date.getTime()-10000);//设定一个过去的时间即可</span><br><span class="line">document.cookie=name+&quot;=v; expires=&quot;+date.toGMTString();</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="IE和DOM事件流的区别"><a href="#IE和DOM事件流的区别" class="headerlink" title="IE和DOM事件流的区别"></a>IE和DOM事件流的区别</h1><p>①执行顺序不一样、<br>②参数不一样<br>③事件加不加on<br>④this指向问题</p>
+<h1 id="eval是做什么的？"><a href="#eval是做什么的？" class="headerlink" title="eval是做什么的？"></a>eval是做什么的？</h1><p>①它的功能是把对应的字符串解析成JS代码并运行；<br>②应该避免使用eval，不安全，非常耗性能（2次，一次解析成js语句，一次执行）。<br>③由JSON字符串转换为JSON对象的时候可以用eval，<code>var obj =eval(&#39;(&#39;+ str +&#39;)&#39;)</code>;</p>
+<h1 id="call-和-apply-的区别和作用？"><a href="#call-和-apply-的区别和作用？" class="headerlink" title="call() 和 apply() 的区别和作用？"></a>call() 和 apply() 的区别和作用？</h1><p>①apply()函数有两个参数：第一个参数是上下文，第二个参数是参数组成的数组。如果上下文是null，则使用全局对象代替。<br>如：<code>function.apply(this,[1,2,3])</code>；<br>②call()的第一个参数是上下文，后续是实例传入的参数序列。<br>如：<code>function.call(this,1,2,3)</code>；</p>
+<h1 id="一个页面从输入-URL-到页面加载显示完成，这个过程中都发生了什么？"><a href="#一个页面从输入-URL-到页面加载显示完成，这个过程中都发生了什么？" class="headerlink" title="一个页面从输入 URL 到页面加载显示完成，这个过程中都发生了什么？"></a>一个页面从输入 URL 到页面加载显示完成，这个过程中都发生了什么？</h1><p>（1）查找浏览器缓存<br>（2）DNS解析、查找该域名对应的IP地址、重定向（301）、发出第二个GET请求<br>（3）进行HTTP协议会话<br>（4）客户端发送报头(请求报头)<br>（5）服务器回馈报头(响应报头)<br>（6）html文档开始下载<br>（7）文档树建立，根据标记请求所需指定MIME类型的文件<br>（8）文件显示</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2017/06/20/面试新总结/">面试新总结</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">hongye</a></p>
+        <p><span>发布时间:</span>2017-06-20, 17:31:59</p>
+        <p><span>最后更新:</span>2019-06-10, 00:08:30</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2017/06/20/面试新总结/" title="面试新总结">https://xupeihong.github.io/2017/06/20/面试新总结/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://xupeihong.github.io/2017/06/20/面试新总结/　　作者: hongye" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target="_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2017/07/17/docker学习/">
+                    docker学习
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2017/05/31/github配置笔记/">
+                    github配置笔记
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#异步编程-https-juejin-im-post-5900014fb123db260cbad520"><span class="toc-number">1.</span> <span class="toc-text">异步编程 (https://juejin.im/post/5900014fb123db260cbad520)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#关于vue和reactjs的比较（https-juejin-im-entry-590945a644d90400693f8e89）"><span class="toc-number">2.</span> <span class="toc-text">关于vue和reactjs的比较（https://juejin.im/entry/590945a644d90400693f8e89）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#xhtml和html的区别："><span class="toc-number">3.</span> <span class="toc-text">xhtml和html的区别：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#主流浏览器的内核："><span class="toc-number">4.</span> <span class="toc-text">主流浏览器的内核：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#清除浮动的几种方式和-各自的优缺点"><span class="toc-number">5.</span> <span class="toc-text">清除浮动的几种方式和 各自的优缺点</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Ajax请求时如何解析json数据"><span class="toc-number">6.</span> <span class="toc-text">Ajax请求时如何解析json数据</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#闭包是什么？有什么特性？为什么使用闭包"><span class="toc-number">7.</span> <span class="toc-text">闭包是什么？有什么特性？为什么使用闭包</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#如何阻止事件冒泡和默认事件？"><span class="toc-number">8.</span> <span class="toc-text">如何阻止事件冒泡和默认事件？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#解释jsonp的原理，以及为什么不是真正的ajax"><span class="toc-number">9.</span> <span class="toc-text">解释jsonp的原理，以及为什么不是真正的ajax</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#数组去重的方法"><span class="toc-number">10.</span> <span class="toc-text">数组去重的方法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#升序排序"><span class="toc-number">11.</span> <span class="toc-text">升序排序</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#排序后插入数据"><span class="toc-number">12.</span> <span class="toc-text">排序后插入数据</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#cssHack如何书写"><span class="toc-number">13.</span> <span class="toc-text">cssHack如何书写</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#canvas和svg的区别"><span class="toc-number">14.</span> <span class="toc-text">canvas和svg的区别</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Canvas"><span class="toc-number">14.1.</span> <span class="toc-text">Canvas</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SVG"><span class="toc-number">14.2.</span> <span class="toc-text">SVG</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#常见的网页图像格式有ico、jpg、png、gif说说他们各自应用场景；"><span class="toc-number">15.</span> <span class="toc-text">常见的网页图像格式有ico、jpg、png、gif说说他们各自应用场景；</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#如何触发页面的-reflow-repaint"><span class="toc-number">16.</span> <span class="toc-text">如何触发页面的 reflow,repaint</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#如何触发："><span class="toc-number">16.0.1.</span> <span class="toc-text">如何触发：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#如何避免："><span class="toc-number">16.0.2.</span> <span class="toc-text">如何避免：</span></a></li></ol></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#请编写一个JavaScript函数-parseQueryString，它的用途是把URL参数解析为一个对象"><span class="toc-number">17.</span> <span class="toc-text">请编写一个JavaScript函数 parseQueryString，它的用途是把URL参数解析为一个对象</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#提高网站的前端性能，你会关注那些方面？"><span class="toc-number">18.</span> <span class="toc-text">提高网站的前端性能，你会关注那些方面？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#判断浏览器的版本"><span class="toc-number">19.</span> <span class="toc-text">判断浏览器的版本</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#列举html中至少三个实体"><span class="toc-number">20.</span> <span class="toc-text">列举html中至少三个实体</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#table-layout、border-collapse有何用途？"><span class="toc-number">21.</span> <span class="toc-text">table-layout、border-collapse有何用途？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#浏览器经常遇到的兼容性问题"><span class="toc-number">22.</span> <span class="toc-text">浏览器经常遇到的兼容性问题</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#xhtml和html有什么区别"><span class="toc-number">23.</span> <span class="toc-text">xhtml和html有什么区别</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#iframe有哪些缺点？"><span class="toc-number">24.</span> <span class="toc-text">iframe有哪些缺点？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#如何在页面上实现一个圆形的可点击区域？"><span class="toc-number">25.</span> <span class="toc-text">如何在页面上实现一个圆形的可点击区域？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Html5与html4相比，各有何优缺点？-怎样处理html5新标签的兼容性问题？"><span class="toc-number">26.</span> <span class="toc-text">Html5与html4相比，各有何优缺点？ 怎样处理html5新标签的兼容性问题？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#String-match与RegExp-exec有何区别？"><span class="toc-number">27.</span> <span class="toc-text">String.match与RegExp.exec有何区别？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#简述COOKIE。在JS中如何操作Cookie"><span class="toc-number">28.</span> <span class="toc-text">简述COOKIE。在JS中如何操作Cookie?</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#添加一个cookie"><span class="toc-number">28.1.</span> <span class="toc-text">添加一个cookie</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#根据指定名称的Cookie修改Cookie的值"><span class="toc-number">28.2.</span> <span class="toc-text">根据指定名称的Cookie修改Cookie的值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#获取指定名称的cookie值"><span class="toc-number">28.3.</span> <span class="toc-text">获取指定名称的cookie值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#删除指定名称的cookie"><span class="toc-number">28.4.</span> <span class="toc-text">删除指定名称的cookie</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#IE和DOM事件流的区别"><span class="toc-number">29.</span> <span class="toc-text">IE和DOM事件流的区别</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#eval是做什么的？"><span class="toc-number">30.</span> <span class="toc-text">eval是做什么的？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#call-和-apply-的区别和作用？"><span class="toc-number">31.</span> <span class="toc-text">call() 和 apply() 的区别和作用？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#一个页面从输入-URL-到页面加载显示完成，这个过程中都发生了什么？"><span class="toc-number">32.</span> <span class="toc-text">一个页面从输入 URL 到页面加载显示完成，这个过程中都发生了什么？</span></a></li>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录" title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"面试新总结　| 红叶知秋　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2017/07/17/docker学习/" title="上一篇: docker学习">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2017/05/31/github配置笔记/" title="下一篇: github配置笔记">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/06/10/hello-world/">Hello World</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/02/21/项目时间管理/">项目时间管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/12/学习总结/">学习总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/31/css标准解决方案/">css标准解决方案</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/30/Webstorm常用插件/">Webstorm常用插件</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/30/Sublime常用插件/">Sublime常用插件</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/30/Markdown语法/">Markdown语法</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/30/atom常用插件/">atom常用插件</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/31/ES6学习/">ES6学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/17/docker学习/">docker学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/20/面试新总结/">面试新总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/31/github配置笔记/">github配置笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/31/Nodejs笔记/">Nodejs笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/31/百度新闻项目/">百度新闻项目</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/31/创建博客/">创建博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/31/express学习笔记/">express学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/31/轮播/">轮播</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/31/glup-bower学习笔记/">glup-bower学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/31/less学习笔记/">less学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/31/npm命令/">npm命令</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/31/react框架学习/">react框架学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/31/Vue学习笔记/">Vue学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/31/面试题集/">面试题集</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/31/正则表达式总结/">正则表达式总结</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016-2019 hongye
+            </div>
+            
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style="display:none">
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style="display:none">
+                        <span id="page-visit" title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>

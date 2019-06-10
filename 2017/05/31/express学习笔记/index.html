@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<meta name="author" content="hongye">
+
+
+
+<meta name="description" content="html部分1234567891011&amp;lt;meta name=&amp;quot;keywords&amp;quot; content=&amp;quot;your keywords&amp;quot;&amp;gt;    &amp;lt;meta name=&amp;quot;description&amp;quot; content=&amp;quot;your description&amp;quot;&amp;gt;    &amp;lt;link rel=&amp;quot;styl">
+<meta name="keywords" content="express+mysql">
+<meta property="og:type" content="article">
+<meta property="og:title" content="express学习笔记">
+<meta property="og:url" content="https://xupeihong.github.io/2017/05/31/express学习笔记/index.html">
+<meta property="og:site_name" content="红叶知秋">
+<meta property="og:description" content="html部分1234567891011&amp;lt;meta name=&amp;quot;keywords&amp;quot; content=&amp;quot;your keywords&amp;quot;&amp;gt;    &amp;lt;meta name=&amp;quot;description&amp;quot; content=&amp;quot;your description&amp;quot;&amp;gt;    &amp;lt;link rel=&amp;quot;styl">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-06-09T16:08:30.146Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="express学习笔记">
+<meta name="twitter:description" content="html部分1234567891011&amp;lt;meta name=&amp;quot;keywords&amp;quot; content=&amp;quot;your keywords&amp;quot;&amp;gt;    &amp;lt;meta name=&amp;quot;description&amp;quot; content=&amp;quot;your description&amp;quot;&amp;gt;    &amp;lt;link rel=&amp;quot;styl">
+
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="红叶知秋" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>express学习笔记 | 红叶知秋</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: undefined
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head></html>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">hongye</a></h1>
+        </hgroup>
+
+        
+
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/categories/">分类</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="/xupeihongok@163.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="https://github.com/xupeihong" title="GitHub"></a>
+                            
+                                <a class="fa RSS" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker开源的应用容器引擎/">Docker开源的应用容器引擎</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6学习/">ES6学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown操作/">Markdown操作</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nodejs/">Nodejs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sublime-text操作/">Sublime text操作</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/atom操作/">atom操作</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/express-mysql/">express+mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/express-mysql百度新闻/">express+mysql百度新闻</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gitConfig/">gitConfig</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/glup-bower/">glup+bower</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/less/">less</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm命令/">npm命令</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webstrom操作/">webstrom操作</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端面试/">前端面试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正则/">正则</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/轮播/">轮播</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/项目管理/">项目管理</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注于前端</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">hongye</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">hongye</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/categories/">分类</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="/xupeihongok@163.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/xupeihong" title="GitHub"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
+</nav>
+      <div class="body-wrap"><article id="post-express学习笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/05/31/express学习笔记/" class="article-date">
+      <time datetime="2017-05-30T18:53:05.000Z" itemprop="datePublished">2017-05-31</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      express学习笔记
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/express-mysql/">express+mysql</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="html部分"><a href="#html部分" class="headerlink" title="html部分"></a>html部分</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=&quot;keywords&quot; content=&quot;your keywords&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;description&quot; content=&quot;your description&quot;&gt;</span><br><span class="line">    &lt;link rel=&quot;stylesheet&quot; href=&quot;bootstrap/dist/css/bootstrap.min.css&quot;&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">        .diary &#123;</span><br><span class="line">            width: 500px;</span><br><span class="line">            margin: 80px auto;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">&lt;div class=&quot;panel panel-default diary&quot;&gt;</span><br><span class="line">    &lt;div class=&quot;panel-heading&quot;&gt;</span><br><span class="line">        &lt;h3 class=&quot;panel-title&quot;&gt;</span><br><span class="line">            我的日记本</span><br><span class="line">        &lt;/h3&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;div class=&quot;panel-body&quot;&gt;</span><br><span class="line">        &lt;form class=&quot;form-inline&quot;&gt;</span><br><span class="line">            &lt;div class=&quot;form-group&quot;&gt;</span><br><span class="line">                &lt;label for=&quot;title&quot;&gt;Title&lt;/label&gt;</span><br><span class="line">                &lt;input type=&quot;text&quot; class=&quot;form-control&quot; id=&quot;title&quot; placeholder=&quot;再测试一个&quot;&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">            &lt;div class=&quot;form-group&quot;&gt;</span><br><span class="line">                &lt;label for=&quot;emotion&quot;&gt;Emotion&lt;/label&gt;</span><br><span class="line">                &lt;select class=&quot;form-control&quot; id=&quot;emotion&quot;&gt;</span><br><span class="line">                    &lt;option&gt;喜悦&lt;/option&gt;</span><br><span class="line">                    &lt;option&gt;高兴&lt;/option&gt;</span><br><span class="line">                    &lt;option&gt;失落&lt;/option&gt;</span><br><span class="line">                    &lt;option&gt;一般&lt;/option&gt;</span><br><span class="line">                    &lt;option&gt;沮丧&lt;/option&gt;</span><br><span class="line">                &lt;/select&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">            &lt;button type=&quot;submit&quot; class=&quot;btn btn-primary&quot; id=&quot;btn&quot;&gt;添加日记&lt;/button&gt;</span><br><span class="line">            &lt;div class=&quot;form-group&quot;&gt;</span><br><span class="line">                &lt;label for=&quot;Content&quot;&gt;日记&lt;/label&gt;&lt;br&gt;</span><br><span class="line">                &lt;textarea class=&quot;form-control&quot; rows=&quot;3&quot; cols=&quot;60&quot; id=&quot;Content&quot;&gt;&lt;/textarea&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">        &lt;/form&gt;</span><br><span class="line">        &lt;hr&gt;</span><br><span class="line">        &lt;table class=&quot;table table-hover&quot;&gt;</span><br><span class="line">            &lt;thead&gt;</span><br><span class="line">            &lt;tr&gt;</span><br><span class="line">                &lt;th&gt;编号&lt;/th&gt;</span><br><span class="line">                &lt;th&gt;日期&lt;/th&gt;</span><br><span class="line">                &lt;th&gt;心情&lt;/th&gt;</span><br><span class="line"></span><br><span class="line">            &lt;/tr&gt;</span><br><span class="line">            &lt;/thead&gt;</span><br><span class="line">            &lt;tbody id=&quot;tb&quot;&gt;</span><br><span class="line"></span><br><span class="line">            &lt;/tbody&gt;</span><br><span class="line">        &lt;/table&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- 模态框 --&gt;</span><br><span class="line">&lt;div class=&quot;modal fade mo&quot; tabindex=&quot;-1&quot; role=&quot;dialog&quot; id=&quot;myModal&quot; aria-labelledby=&quot;myModalLabel&quot;&gt;</span><br><span class="line">    &lt;div class=&quot;modal-dialog&quot; role=&quot;document&quot;&gt;</span><br><span class="line">        &lt;div class=&quot;modal-content&quot;&gt;</span><br><span class="line">            &lt;div class=&quot;modal-header&quot;&gt;</span><br><span class="line">                &lt;button type=&quot;button&quot; class=&quot;close&quot; data-dismiss=&quot;modal&quot; aria-label=&quot;Close&quot;&gt;&lt;span</span><br><span class="line">                        aria-hidden=&quot;true&quot;&gt;&amp;times;&lt;/span&gt;&lt;/button&gt;</span><br><span class="line">                &lt;h4 class=&quot;modal-title&quot;&gt;&lt;/h4&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">            &lt;div class=&quot;modal-body&quot;&gt;</span><br><span class="line">                &lt;!--&lt;p&gt;2&lt;/p&gt;--&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">            &lt;div class=&quot;modal-footer&quot;&gt;</span><br><span class="line">                &lt;button type=&quot;button&quot; class=&quot;btn btn-default&quot; data-dismiss=&quot;modal&quot; id=&quot;close&quot;&gt;Close&lt;/button&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">        &lt;/div&gt;&lt;!-- /.modal-content --&gt;</span><br><span class="line">    &lt;/div&gt;&lt;!-- /.modal-dialog --&gt;</span><br><span class="line">&lt;/div&gt;&lt;!-- /.modal --&gt;</span><br><span class="line"></span><br><span class="line">&lt;script src=&quot;jquery/dist/jquery.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script src=&quot;bootstrap/dist/js/bootstrap.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    $(document).ready(function () &#123;</span><br><span class="line">        var num = &quot;&quot;;</span><br><span class="line">        // 开启页面的时候获取所有日记渲染表格，需要动态生成tr标签与td标签</span><br><span class="line">        $.ajax(&#123;</span><br><span class="line">            url: &quot;/getdiary&quot;,</span><br><span class="line">            type: &quot;GET&quot;,</span><br><span class="line">            success: function (data) &#123;</span><br><span class="line">//                console.log(data);</span><br><span class="line">                for (var i = 0; i &lt; data.length; i++) &#123;</span><br><span class="line">                    var tr = $(&quot;&lt;tr&gt;&lt;/tr&gt;&quot;);</span><br><span class="line">                    var td = $(&quot;&lt;td&gt;&quot; + data[i].did + &quot;&lt;/td&gt;&quot;);</span><br><span class="line">                    var td2 = $(&quot;&lt;td&gt;&quot; + data[i].diaryDate + &quot;&lt;/td&gt;&quot;);</span><br><span class="line">                    var td3 = $(&quot;&lt;td&gt;&quot; + data[i].emotion + &quot;&lt;/td&gt;&quot;);</span><br><span class="line">                    var td4 = $(&apos;&lt;td&gt;&lt;button type=&quot;button&quot; class=&quot;btn btn-info btn-xs chk&quot;id=&quot;check&apos; + data[i].did + &apos;&quot; data-toggle=&quot;modal&quot; data-target=&quot;#myModal&quot;&gt;查看&lt;/button&gt;&lt;/td&gt;&apos;);</span><br><span class="line">                    var td5 = $(&apos;&lt;td&gt;&lt;button type=&quot;button&quot; class=&quot;btn btn-info btn-xs del&quot;id=&quot;del&apos; + data[i].did + &apos;&quot;&gt;删除&lt;/button&gt;&lt;/td&gt;&apos;);</span><br><span class="line">                    var td6 = $(&apos;&lt;td&gt;&lt;button type=&quot;button&quot; class=&quot;btn btn-info btn-xs update&quot;id=&quot;update&apos; + data[i].did + &apos;&quot;&gt;修改&lt;/button&gt;&lt;/td&gt;&apos;);</span><br><span class="line">                    tr.append(td);</span><br><span class="line">                    tr.append(td2);</span><br><span class="line">                    tr.append(td3);</span><br><span class="line">                    tr.append(td4);</span><br><span class="line">                    tr.append(td5);</span><br><span class="line">                    tr.append(td6);</span><br><span class="line">                    tr.appendTo($(&quot;#tb&quot;));</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;, error: function (err) &#123;</span><br><span class="line">                console.log(err);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">        // 点击添加按钮添加日记并更新列表</span><br><span class="line">        $(&quot;#title&quot;).blur(function () &#123;</span><br><span class="line">            var pa = $(&quot;#title&quot;).val();</span><br><span class="line">            if (pa != &quot;&quot; &amp;&amp; pa != null) &#123;</span><br><span class="line">                $(&quot;#title&quot;).css(&quot;border-color&quot;, &quot;&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        $(&quot;#Content&quot;).blur(function () &#123;</span><br><span class="line">            var pa = $(&quot;#Content&quot;).val();</span><br><span class="line">            if (pa != &quot;&quot; &amp;&amp; pa != null) &#123;</span><br><span class="line">                $(&quot;#Content&quot;).css(&quot;border-color&quot;, &quot;&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        $(&quot;#btn&quot;).click(function (e) &#123;</span><br><span class="line">            e.preventDefault();</span><br><span class="line">            if (num == &quot;&quot;) &#123;</span><br><span class="line">                var title = $(&quot;#title&quot;).val();</span><br><span class="line">                var emotion = $(&quot;#emotion&quot;).val();</span><br><span class="line">                var content = $(&quot;#Content&quot;).val();</span><br><span class="line">                if (title == &quot;&quot; || content == &quot;&quot;) &#123;</span><br><span class="line">                    $(&quot;#title&quot;).css(&quot;border-color&quot;, &quot;red&quot;);</span><br><span class="line">                    $(&quot;#Content&quot;).css(&quot;border-color&quot;, &quot;red&quot;);</span><br><span class="line">                &#125;</span><br><span class="line">                if (title != &quot;&quot; &amp;&amp; content != &quot;&quot;) &#123;</span><br><span class="line">                    $.ajax(&#123;</span><br><span class="line">                        url: &quot;/add&quot;,</span><br><span class="line">                        type: &quot;POST&quot;,</span><br><span class="line">                        data: &#123;</span><br><span class="line">                            title: title,</span><br><span class="line">                            emotion: emotion,</span><br><span class="line">                            content: content</span><br><span class="line">                        &#125;, success: function (data) &#123;</span><br><span class="line">                            if (data.status === &quot;ok&quot;) &#123;</span><br><span class="line">                                alert(data.message);</span><br><span class="line">                                $(&quot;#title&quot;).val(&quot;&quot;);</span><br><span class="line">                                $(&quot;#Content&quot;).val(&quot;&quot;);</span><br><span class="line">                                location.reload();</span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;, error: function (err) &#123;</span><br><span class="line">                            console.log(err);</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;)</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            else &#123;</span><br><span class="line">                var title = $(&quot;#title&quot;).val();</span><br><span class="line">                var emotion = $(&quot;#emotion&quot;).val();</span><br><span class="line">                var content = $(&quot;#Content&quot;).val();</span><br><span class="line">//                alert(title);</span><br><span class="line">                $.ajax(&#123;</span><br><span class="line">                    url: &quot;/updateDiarys&quot;,</span><br><span class="line">                    type: &quot;POST&quot;,</span><br><span class="line">                    data: &#123;</span><br><span class="line">                        num: num,</span><br><span class="line">                        title: title,</span><br><span class="line">                        emotion: emotion,</span><br><span class="line">                        content: content</span><br><span class="line">                    &#125;,</span><br><span class="line">                    success: function (data) &#123;</span><br><span class="line">                        //待解决的问题</span><br><span class="line">//                        alert(1);</span><br><span class="line">                        if (data.status === &quot;ok&quot;) &#123;</span><br><span class="line">                            alert(data.message);</span><br><span class="line">                            $(&quot;#title&quot;).val(&quot;&quot;);</span><br><span class="line">                            $(&quot;#Content&quot;).val(&quot;&quot;);</span><br><span class="line">                            location.reload();</span><br><span class="line">                            num = &quot;&quot;;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;,</span><br><span class="line">                    error: function (err) &#123;</span><br><span class="line">                        console.log(err);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        // 点击查看，蹦出模态框展示日记</span><br><span class="line">        //</span><br><span class="line">        $(&quot;tbody&quot;).on(&quot;click&quot;, &quot;.chk&quot;, function () &#123;</span><br><span class="line">            var str = $(this).attr(&quot;id&quot;);//attr()获取属性的值</span><br><span class="line">            var id = str.substring(5, 10);</span><br><span class="line">//            alert(id);</span><br><span class="line">            $.ajax(&#123;</span><br><span class="line">                url: &quot;/getone&quot;,</span><br><span class="line">                type: &quot;GET&quot;,</span><br><span class="line">                data: &#123;id: id&#125;,</span><br><span class="line">                success: function (data) &#123;</span><br><span class="line">                    //动态拼接</span><br><span class="line">                    var time = data[0].diaryDate;</span><br><span class="line">                    time = time.substring(0, 10);</span><br><span class="line">                    var pc = $(&quot;&lt;p&gt;&lt;/p&gt;&quot;);</span><br><span class="line">                    pc.html(&quot;&quot; + time + &quot;日记----心情：&quot; + data[0].emotion + &quot;----天气：&quot; + data[0].weather + &quot;&quot;).css(&quot;font-weight&quot;, &quot;bold&quot;);</span><br><span class="line">                    var p = $(&quot;&lt;h3&gt;&quot; + data[0].title + &quot;&lt;/h3&gt;&quot;);</span><br><span class="line">                    var p2 = $(&quot;&lt;p&gt;&quot; + data[0].content + &quot;&lt;/p&gt;&quot;);</span><br><span class="line">                    p.appendTo($(&quot;.modal-body&quot;));</span><br><span class="line">                    p2.appendTo($(&quot;.modal-body&quot;));</span><br><span class="line">                    pc.appendTo($(&quot;.modal-title&quot;));</span><br><span class="line"></span><br><span class="line">                &#125;, error: function (err) &#123;</span><br><span class="line">                    console.log(err);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;);</span><br><span class="line">        //关闭刷新页面</span><br><span class="line">        $(&quot;#close&quot;).click(function () &#123;</span><br><span class="line">            window.location.reload();</span><br><span class="line">        &#125;);</span><br><span class="line">        $(&quot;.close&quot;).click(function () &#123;</span><br><span class="line">            window.location.reload();</span><br><span class="line">        &#125;);</span><br><span class="line">        //删除日记</span><br><span class="line">        $(&quot;tbody&quot;).on(&quot;click&quot;, &quot;.del&quot;, function () &#123;</span><br><span class="line">            if (confirm(&quot;是否真的要删除？&quot;)) &#123;</span><br><span class="line">                var index = $(this).attr(&quot;id&quot;);</span><br><span class="line">                var num = index.substring(3, 10);</span><br><span class="line">                var res = $(this).parent().parent();</span><br><span class="line">                $.ajax(&#123;</span><br><span class="line">                    url: &quot;/deldiary&quot;,</span><br><span class="line">                    type: &quot;GET&quot;,</span><br><span class="line">                    data: &#123;id: num&#125;,</span><br><span class="line">                    success: function (data) &#123;</span><br><span class="line">                        if (data.status === &quot;ok&quot;) &#123;</span><br><span class="line">                            alert(data.message);</span><br><span class="line">                            $(res).remove();</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;, error: function (err) &#123;</span><br><span class="line">                        console.log(err);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">        //修改日记</span><br><span class="line">        $(&quot;tbody&quot;).on(&quot;click&quot;, &quot;.update&quot;, function () &#123;</span><br><span class="line">            var str = $(this).attr(&quot;id&quot;);</span><br><span class="line">            var index = str.substring(6, 11);</span><br><span class="line">            num = index;</span><br><span class="line">            $.ajax(&#123;</span><br><span class="line">                url: &quot;/update&quot;,</span><br><span class="line">                type: &quot;POST&quot;,</span><br><span class="line">                data: &#123;id: index&#125;,</span><br><span class="line">                success: function (data) &#123;</span><br><span class="line">                    $(&quot;#title&quot;).val(data[0].title);</span><br><span class="line">                    $(&quot;#Content&quot;).val(data[0].content);</span><br><span class="line">                    $(&quot;#emotion&quot;).val(data[0].emotion);</span><br><span class="line">                &#125;, error: function (err) &#123;</span><br><span class="line">                    console.log(err);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="路由部分"><a href="#路由部分" class="headerlink" title="路由部分"></a>路由部分</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br></pre></td><td class="code"><pre><span class="line">var express = require(&apos;express&apos;);</span><br><span class="line">var router = express.Router();</span><br><span class="line">var mysql = require(&apos;mysql&apos;);</span><br><span class="line">var request = require(&apos;request&apos;);</span><br><span class="line">var got = require(&quot;got&quot;);</span><br><span class="line">var pool = mysql.createPool(&#123;</span><br><span class="line">    host: &quot;localhost&quot;,</span><br><span class="line">    port: 8889,</span><br><span class="line">    user: &quot;root&quot;,</span><br><span class="line">    password: &quot;root&quot;,</span><br><span class="line">    database: &quot;mydb&quot;,</span><br><span class="line">    connectionLimit: 10</span><br><span class="line">&#125;)</span><br><span class="line">/*</span><br><span class="line"> 获取天气信息</span><br><span class="line"> 通过向以下网址发起get请求，可以获取北京地区当日气温信息，</span><br><span class="line"> 从中抽取cond.txt的内容来自动生成日记中的`weather`字段</span><br><span class="line"> https://free-api.heweather.com/v5/now?city=beijing&amp;key=593c403d69364de7b0fd2fe104530de5</span><br><span class="line"> */</span><br><span class="line">var weather = null;</span><br><span class="line">function getweather() &#123;</span><br><span class="line">    request(&apos;https://free-api.heweather.com/v5/now?city=beijing&amp;key=03aa314f0c3d48a3843274645183405f&apos;, function (err, response, body) &#123;</span><br><span class="line">        var a = JSON.parse(body);</span><br><span class="line">        weather = a.HeWeather5[0].now.cond.txt;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line">getweather();</span><br><span class="line">setInterval(getweather, 360000);</span><br><span class="line"></span><br><span class="line">/*</span><br><span class="line"> 数据库链接设置</span><br><span class="line"> */</span><br><span class="line">var connection = mysql.createConnection(&#123;&#125;);</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 路由地址：</span><br><span class="line"> *        &apos;/add&apos;,</span><br><span class="line"> * 请求类型：</span><br><span class="line"> *        &apos;post&apos;,</span><br><span class="line"> * 请求返回内容：</span><br><span class="line"> *        &#123;status:&apos;ok&apos;,message:&apos;添加成功&apos;&#125;;</span><br><span class="line"> *        或</span><br><span class="line"> *        &#123;status:&apos;error&apos;,message:&apos;添加失败&apos;&#125;;</span><br><span class="line"> * 路由说明：</span><br><span class="line"> *        用于向数据库中保存新的日记内容</span><br><span class="line"> * 注意：</span><br><span class="line"> *        天气信息的处理</span><br><span class="line"> */</span><br><span class="line">router.post(&apos;/add&apos;, function (req, res, next) &#123;</span><br><span class="line">    var now = new Date();</span><br><span class="line">    var title = req.body.title,</span><br><span class="line">        emotion = req.body.emotion,</span><br><span class="line">        date = now.toLocaleString(),</span><br><span class="line">        content = req.body.content;</span><br><span class="line">    pool.getConnection(function (err, con) &#123;</span><br><span class="line">        con.query(&apos;insert into `diary`(`title`,`emotion`,`diaryDate`,`content`,`weather`) values (?,?,?,?,?)&apos;, [title, emotion, date, content, weather], function (err, result, f) &#123;</span><br><span class="line">            if (!err) &#123;</span><br><span class="line">                res.send(&#123;status: &quot;ok&quot;, message: &quot;添加日记成功！&quot;&#125;);</span><br><span class="line">            &#125;</span><br><span class="line">            else &#123;</span><br><span class="line">                console.log(err);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">        con.release();</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;);</span><br><span class="line">/**</span><br><span class="line"> * 路由地址：</span><br><span class="line"> *        &apos;/getdiary&apos;,</span><br><span class="line"> * 请求类型：</span><br><span class="line"> *        &apos;get&apos;,</span><br><span class="line"> * 请求返回内容：</span><br><span class="line"> *        查询到的所有日记内容</span><br><span class="line"> * 路由说明：</span><br><span class="line"> *        向用户发送所有的日记信息，用于前端页面展示表格</span><br><span class="line"> */</span><br><span class="line">router.get(&apos;/getdiary&apos;, function (req, res, next) &#123;</span><br><span class="line">    pool.getConnection(function (err, con) &#123;</span><br><span class="line">        con.query(&apos;select * from `diary` order by `diaryDate` desc &apos;, function (err, result, f) &#123;</span><br><span class="line">            if (!err) &#123;</span><br><span class="line">                // console.log(result);</span><br><span class="line">                res.send(result);</span><br><span class="line">            &#125;</span><br><span class="line">            else &#123;</span><br><span class="line">                console.log(err);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">        con.release();</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br><span class="line">/**</span><br><span class="line"> * 路由地址：</span><br><span class="line"> *        &apos;/getone&apos;,</span><br><span class="line"> * 请求类型：</span><br><span class="line"> *        &apos;get&apos;,</span><br><span class="line"> * 请求返回内容：</span><br><span class="line"> *        根据用户发送的查询请求，查找到的单条日记</span><br><span class="line"> * 路由说明：</span><br><span class="line"> *        向用户发送单条日记内容，用于在模态框中进行展示</span><br><span class="line"> */</span><br><span class="line">router.get(&apos;/getone&apos;, function (req, res, next) &#123;</span><br><span class="line">    var id = req.query.id;</span><br><span class="line">    pool.getConnection(function (err, con) &#123;</span><br><span class="line">        con.query(&apos;select * from  `diary` where `did`=&apos; + id + &apos;&apos;, function (err, result, f) &#123;</span><br><span class="line">            if (!err) &#123;</span><br><span class="line">                // console.log(result);</span><br><span class="line">                res.send(result);</span><br><span class="line">            &#125;</span><br><span class="line">            else &#123;</span><br><span class="line">                console.log(err);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">        con.release();</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;);</span><br><span class="line">//删除日记</span><br><span class="line">router.get(&quot;/deldiary&quot;, function (req, res, next) &#123;</span><br><span class="line">    var id = req.query.id;</span><br><span class="line">    // console.log(id);</span><br><span class="line">    pool.getConnection(function (err, conn) &#123;</span><br><span class="line">        conn.query(&apos;delete  from  `diary` where `did`=&apos; + id + &apos;&apos;, function (err, result, f) &#123;</span><br><span class="line">            if (!err) &#123;</span><br><span class="line">                // console.log(result);</span><br><span class="line">                res.send(&#123;status: &quot;ok&quot;, message: &quot;删除成功！&quot;&#125;);</span><br><span class="line"></span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                console.log(err);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">        conn.release();</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;);</span><br><span class="line">//点击修改赋值</span><br><span class="line">router.post(&quot;/update&quot;, function (req, res, next) &#123;</span><br><span class="line">    var id = req.body.id;</span><br><span class="line">    pool.getConnection(function (err, conn) &#123;</span><br><span class="line">        conn.query(&apos;select * from `diary` where `did`=&apos; + id + &apos;&apos;, function (err, result, f) &#123;</span><br><span class="line">            if (!err) &#123;</span><br><span class="line">                res.send(result);</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                console.log(err);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">        conn.release();</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br><span class="line">//修改往数据库插入数据</span><br><span class="line">router.post(&quot;/updateDiarys&quot;, function (req, res, next) &#123;</span><br><span class="line">    var now = new Date();</span><br><span class="line">    var id = req.body.num;</span><br><span class="line">    var title = req.body.title;</span><br><span class="line">    var emotion = req.body.emotion;</span><br><span class="line">    var date = now.toLocaleString();</span><br><span class="line">    var content = req.body.content;</span><br><span class="line">    pool.getConnection(function (err, conn) &#123;</span><br><span class="line">        conn.query(&apos;update `diary` set `title`=?,`emotion`=?,`diaryDate`=?,`weather`=?,`content`=? where `did`=&apos; + id,</span><br><span class="line">            [title, emotion, date, weather, content], function (err, result, f) &#123;</span><br><span class="line">                if (!err) &#123;</span><br><span class="line">                    res.send(&#123;status: &quot;ok&quot;, message: &quot;修改成功!&quot;&#125;);</span><br><span class="line">                &#125;</span><br><span class="line">                else &#123;</span><br><span class="line">                    console.log(err);</span><br><span class="line">                &#125;</span><br><span class="line">                conn.release();</span><br><span class="line">            &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;);</span><br><span class="line">module.exports = router;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2017/05/31/express学习笔记/">express学习笔记</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">hongye</a></p>
+        <p><span>发布时间:</span>2017-05-31, 02:53:05</p>
+        <p><span>最后更新:</span>2019-06-10, 00:08:30</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2017/05/31/express学习笔记/" title="express学习笔记">https://xupeihong.github.io/2017/05/31/express学习笔记/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://xupeihong.github.io/2017/05/31/express学习笔记/　　作者: hongye" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target="_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2017/05/31/创建博客/">
+                    创建博客
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2017/05/31/轮播/">
+                    轮播
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#html部分"><span class="toc-number">1.</span> <span class="toc-text">html部分</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#路由部分"><span class="toc-number">2.</span> <span class="toc-text">路由部分</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录" title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"express学习笔记　| 红叶知秋　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2017/05/31/创建博客/" title="上一篇: 创建博客">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2017/05/31/轮播/" title="下一篇: 轮播">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/06/10/hello-world/">Hello World</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/02/21/项目时间管理/">项目时间管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/12/学习总结/">学习总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/31/css标准解决方案/">css标准解决方案</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/30/Webstorm常用插件/">Webstorm常用插件</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/30/Sublime常用插件/">Sublime常用插件</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/30/Markdown语法/">Markdown语法</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/30/atom常用插件/">atom常用插件</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/31/ES6学习/">ES6学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/17/docker学习/">docker学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/20/面试新总结/">面试新总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/31/github配置笔记/">github配置笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/31/Nodejs笔记/">Nodejs笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/31/百度新闻项目/">百度新闻项目</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/31/创建博客/">创建博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/31/express学习笔记/">express学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/31/轮播/">轮播</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/31/glup-bower学习笔记/">glup-bower学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/31/less学习笔记/">less学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/31/npm命令/">npm命令</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/31/react框架学习/">react框架学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/31/Vue学习笔记/">Vue学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/31/面试题集/">面试题集</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/31/正则表达式总结/">正则表达式总结</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016-2019 hongye
+            </div>
+            
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style="display:none">
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style="display:none">
+                        <span id="page-visit" title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>
