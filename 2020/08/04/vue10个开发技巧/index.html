@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>vue10个开发技巧 | 红叶知秋</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  <meta name="description" content="优雅更新props值child.vue  1.直接通过props，$emit修改值12345678910export defalut&amp;#123;  props:&amp;#123;    title:String  &amp;#125;,  methods:&amp;#123;    changeTitle()&amp;#123;      this.$emit(&amp;apos;change-title&amp;apos;,&amp;apos;he">
+<meta name="keywords" content="vue">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue10个开发技巧">
+<meta property="og:url" content="https://xupeihong.github.io/2020/08/04/vue10个开发技巧/index.html">
+<meta property="og:site_name" content="红叶知秋">
+<meta property="og:description" content="优雅更新props值child.vue  1.直接通过props，$emit修改值12345678910export defalut&amp;#123;  props:&amp;#123;    title:String  &amp;#125;,  methods:&amp;#123;    changeTitle()&amp;#123;      this.$emit(&amp;apos;change-title&amp;apos;,&amp;apos;he">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-08-04T07:58:39.631Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="vue10个开发技巧">
+<meta name="twitter:description" content="优雅更新props值child.vue  1.直接通过props，$emit修改值12345678910export defalut&amp;#123;  props:&amp;#123;    title:String  &amp;#125;,  methods:&amp;#123;    changeTitle()&amp;#123;      this.$emit(&amp;apos;change-title&amp;apos;,&amp;apos;he">
+  
+    <link rel="alternate" href="/atom.xml" title="红叶知秋" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/images/default-avatar.jpg">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/highlight.css">
+</head>
+</html>
+<body>
+  <div id="fullpage" class="mobile-nav-right">
+    
+      <div id="wrapper" title="图片来自网络">
+    
+    
+      <header id="header">
+  <div id="nav-toggle" class="nav-toggle"></div>
+  <div class="head-box global-width">
+    <nav class="nav-box nav-right">
+      
+        <a class="nav-item" href="/" title>首页</a>
+      
+        <a class="nav-item" href="/archives" title>归档</a>
+      
+        <a class="nav-item" href="https://github.com/xupeihong" title target="_blank">穿梭</a>
+      
+        <a class="nav-item" href="/mood" title target="_blank">心情</a>
+      
+        <a class="nav-item" href="/pda" title>手账</a>
+      
+        <a class="nav-item" href="/negative" title>暗黑</a>
+      
+        <a class="nav-item" href="/about" title>关于</a>
+      
+    </nav>
+  </div>
+</header>
+      <div id="middlecontent" title class="global-width sidebar-right">
+        <section id="main"><article id="post-vue10个开发技巧" class="article global-container article-type-post" itemscope itemprop="blogPost">
+  
+    <header class="article-header">
+      
+  
+    <h1 class="article-title" itemprop="name">
+      vue10个开发技巧
+    </h1>
+  
+
+    </header>
+  
+  <div class="article-meta">
+    <a href="/2020/08/04/vue10个开发技巧/" class="article-date">
+  <time datetime="2020-08-04T06:08:07.000Z" itemprop="datePublished">2020-08-04</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+  </div>
+
+    
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li></ul>
+
+  </div>
+  
+    <span id="busuanzi_container_page_pv">
+      本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+    </span>
+  
+
+  <div class="article-inner">
+    
+    <div class="article-content article-content-cloud" itemprop="articleBody">
+      
+        <h3 id="优雅更新props值"><a href="#优雅更新props值" class="headerlink" title="优雅更新props值"></a>优雅更新props值</h3><p><code>child.vue  1.直接通过props，$emit修改值</code><br><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">export defalut&#123;</span><br><span class="line">  props:&#123;</span><br><span class="line">    title:String</span><br><span class="line">  &#125;,</span><br><span class="line">  methods:&#123;</span><br><span class="line">    changeTitle()&#123;</span><br><span class="line">      this.$emit(&apos;change-title&apos;,&apos;hello&apos;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></p>
+<h3 id="parent-vue"><a href="#parent-vue" class="headerlink" title="parent.vue"></a>parent.vue</h3><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;child :title=&apos;title&apos; @change-title=&quot;changeTitle&quot;&gt;&lt;/child&gt;</span><br><span class="line">export defalut&#123;</span><br><span class="line">  data()&#123;</span><br><span class="line">    return&#123;</span><br><span class="line">      title:&apos;原标题&apos;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods:&#123;</span><br><span class="line">    changeTitle(title)&#123;</span><br><span class="line">      this.title=title;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p><code>2.但如果想单纯的更新props，没有其他操作可以使用sync修饰</code><br><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">parent.vue</span><br><span class="line">&lt;child :title.sync=&apos;title&apos;&gt;</span><br><span class="line">    &lt;span&gt;&#123;&#123;title&#125;&#125;&lt;/span&gt;</span><br><span class="line">&lt;/child&gt;</span><br><span class="line">child.vue</span><br><span class="line">&lt;input @blur=&quot;changeTitle&gt;</span><br><span class="line">&lt;slot&gt;&lt;/slot&gt;</span><br><span class="line">export defalut&#123;</span><br><span class="line">  props:&#123;</span><br><span class="line">    title:String</span><br><span class="line">  &#125;</span><br><span class="line">  methods:&#123;</span><br><span class="line">    changeTitle(e)&#123;</span><br><span class="line">      this.$emit(&apos;update:title&apos;,e.target.value)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></p>
+<a id="more"></a>
+<p>通过添加update:属性名来更新prop</p>
+<h3 id="provide-inject"><a href="#provide-inject" class="headerlink" title="provide/inject"></a>provide/inject</h3><p>祖孙组件之间传递信息，祖组件将自己的属性通过provide暴露出去，下面的子孙组件通过inject来接收暴露的属性。<br><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">App.vue</span><br><span class="line">export defalut&#123;</span><br><span class="line">  provide()&#123;</span><br><span class="line">    return&#123;</span><br><span class="line">      app:this</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">child.vue</span><br><span class="line">export defalut&#123;</span><br><span class="line">  inject:[&apos;app&apos;],</span><br><span class="line">  created()&#123;</span><br><span class="line">    console.log(this.app)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></p>
+<h3 id="小型状态管理器"><a href="#小型状态管理器" class="headerlink" title="小型状态管理器"></a>小型状态管理器</h3><p>大型项目中的数据状态比较复杂，一般都会使用vuex,但在一些小项目或者状态简单的项目中，可以用Vue.observable，2.6.0+版本才有这个属性，它能让一个对象变成响应式数据<br><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">import Vue from &apos;vue&apos;</span><br><span class="line">export  const state=Vue.observable(&#123;</span><br><span class="line">  count:0</span><br><span class="line">&#125;)</span><br><span class="line">使用：</span><br><span class="line">&lt;div @click=&quot;setCount&quot;&gt;&#123;&#123;count&#125;&#125;&lt;/div&gt;</span><br><span class="line">import &#123;state&#125; from &apos;../store.js&apos;</span><br><span class="line">export defalut&#123;</span><br><span class="line">  computed:&#123;</span><br><span class="line">    count()&#123;</span><br><span class="line">      return state.count</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods:&#123;</span><br><span class="line">    setCount()&#123;</span><br><span class="line">      state.count++</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></p>
+<h3 id="巧用tempalte"><a href="#巧用tempalte" class="headerlink" title="巧用tempalte"></a>巧用tempalte</h3><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;div v-if=&quot;status==&apos;ok&apos;&quot;&gt;</span><br><span class="line">  &lt;h1&gt;Title&lt;/h1&gt;</span><br><span class="line">  &lt;p&gt;fds&lt;/p&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure></div>
+<p>像这种多层嵌套的，div只是切换条件而存在的，没什么意义，这种可以使用template<br><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">   &lt;div&gt;</span><br><span class="line">      &lt;template v-if=&quot;status==&apos;ok&apos;&quot;&gt;</span><br><span class="line">        &lt;h1&gt;Title&lt;/h1&gt;</span><br><span class="line">        &lt;p&gt;fds&lt;/p&gt;</span><br><span class="line">      &lt;/template&gt;</span><br><span class="line">   &lt;div&gt;</span><br><span class="line">&lt;template&gt;</span><br></pre></td></tr></table></figure></div></p>
+<h3 id="过滤器的使用"><a href="#过滤器的使用" class="headerlink" title="过滤器的使用"></a>过滤器的使用</h3><p>过滤器被用于一些常见的文本格式化，被添加到表达式的尾部<br><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;&#123;&#123;text|capitalize&#125;&#125;&lt;/div&gt;</span><br><span class="line">export defalut&#123;</span><br><span class="line">  data()&#123;</span><br><span class="line">    return&#123;</span><br><span class="line">      text:&apos;hello&apos;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  filters:&#123;</span><br><span class="line">    capitalize(value)&#123;</span><br><span class="line">      if(!value) return &apos;&apos;</span><br><span class="line">      value=value.toString()</span><br><span class="line">      return value.charAt(0).toUpperCase()+value.slice(1)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></p>
+<p>过滤器不能通过this引用，所以就可以通过this.$options.filters拿到过滤器<br><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">export defalut&#123;</span><br><span class="line">  methods:&#123;</span><br><span class="line">    getDetail()&#123;</span><br><span class="line">      this.$api.getDetail(&#123;</span><br><span class="line">        id:this.id</span><br><span class="line">      &#125;).then(res=&gt;&#123;</span><br><span class="line">        let capitalize=this.$options.filters.capitalize</span><br><span class="line">        this.title=capitalize(res.data.title)</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></p>
+<h3 id="优雅注册插件"><a href="#优雅注册插件" class="headerlink" title="优雅注册插件"></a>优雅注册插件</h3><p>插件通常用来为Vue添加全局功能。常用的vue-router,vuex都是通过Vue.use来注册的。按需加载的话都放在main.js里，体积会越来越大，所以需要单独封装一个配置文件，在配上Vue.use，在入口文件使用能让人一目了然<br><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">vant.config.js</span><br><span class="line">import &#123;Toptip,Button&#125; from &apos;iview-design&apos;</span><br><span class="line">const components=&#123;</span><br><span class="line">  Toptip,</span><br><span class="line">  Button</span><br><span class="line">&#125;</span><br><span class="line">const componentsHandler=&#123;</span><br><span class="line">  install(Vue)&#123;</span><br><span class="line">    Object.keys(components).forEach(key=&gt;Vue.use(components[key]))</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">export defalut componentsHandler</span><br><span class="line">main.js:</span><br><span class="line">import Vue from &apos;vue&apos;</span><br><span class="line">import vantComponents from &apos;@/config/vant.config&apos;</span><br><span class="line">Vue.config.productionTip=false</span><br><span class="line">Vue.use(vantComponents)</span><br><span class="line">new Vue(&#123;</span><br><span class="line">  render:h=&gt;h(App)</span><br><span class="line">&#125;).$mount(&apos;#app&apos;)</span><br></pre></td></tr></table></figure></div></p>
+<h3 id="路由懒加载"><a href="#路由懒加载" class="headerlink" title="路由懒加载"></a>路由懒加载</h3><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">let router=new Router(&#123;</span><br><span class="line">  routes:[</span><br><span class="line">    &#123;</span><br><span class="line">      path:&apos;/login&apos;,</span><br><span class="line">      name:&apos;login&apos;,</span><br><span class="line">      component:import(&apos;@/views/login.vue&apos;)</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      path:&apos;/detail&apos;,</span><br><span class="line">      name:&apos;detail&apos;,</span><br><span class="line">      component:import(&apos;@/views/detail.vue&apos;)</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      path:&apos;/register&apos;,</span><br><span class="line">      name:&apos;register&apos;,</span><br><span class="line">      component:import(&apos;@/views/register.vue&apos;)</span><br><span class="line">    &#125;,</span><br><span class="line">  ]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></div>
+<p>像上面这种，都是类似的结构可以直接使用map去加载<br><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">const routeOptions=[</span><br><span class="line">  &#123;</span><br><span class="line">    path:&apos;/login&apos;,</span><br><span class="line">    name:&apos;login&apos;</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    path:&apos;/detail&apos;,</span><br><span class="line">    name:&apos;detail&apos;</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    path:&apos;/register&apos;,</span><br><span class="line">    name:&apos;register&apos;</span><br><span class="line">  &#125;,</span><br><span class="line">]</span><br><span class="line">const routes=routeOptions.map(route=&gt;&#123;</span><br><span class="line">  if(!route.component)&#123;</span><br><span class="line">    route=&#123;</span><br><span class="line">      ...route,</span><br><span class="line">      component:()=&gt;import(&apos;@/views/$&#123;route.name&#125;.vue&apos;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return route</span><br><span class="line">&#125;)</span><br><span class="line">let router=new Router(&#123;</span><br><span class="line">  routes</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></div></p>
+<p>这个使用webpack来解决，代码中没办法编写动态注释的问题<br><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">const routes=routeOptions.map(route=&gt;&#123;</span><br><span class="line">  if(!route.component)&#123;</span><br><span class="line">    route=&#123;</span><br><span class="line">      ...route,</span><br><span class="line">      component:()=&gt;important(/*动态注释*/&apos;@/views/$&#123;route.name&#125;.vue&apos;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  returnn route</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></div></p>
+
+      
+    </div>
+    
+      <footer class="article-footer">
+        完
+      </footer>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  <div class="article-nav-block">
+    
+  </div>
+  <div class="article-nav-block">
+    
+      <a href="/2020/05/08/vue基础及项目实战/" id="article-nav-older" class="article-nav-link-wrap">
+        <div class="article-nav-title">vue基础及项目实战</div>
+        <strong class="article-nav-caption"></strong>
+      </a>
+    
+  </div>
+</nav>
+
+    <link rel="stylesheet" href="/css/gitment.css"> 
+<script src="/js/gitment.js"></script>
+
+<div id="gitmentContainer"></div>
+
+<script>
+var gitment = new Gitment({
+  owner: 'null',
+  repo: 'null',
+  oauth: {
+    client_id: 'null',
+    client_secret: 'null',
+  },
+})
+gitment.render('gitmentContainer')
+</script>
+
+  
+  
+</article>
+</section>
+        <aside id="sidebar">
+  
+    <div class="widget-box">
+  <div class="avatar-box">
+    <img class="avatar" src="/images/default-avatar.jpg" title="图片来自网络">
+    <h3 class="avatar-name">
+      
+        红叶知秋
+      
+    </h3>
+    <p class="avatar-slogan">
+      前端工程师一枚。
+    </p>
+  </div>
+</div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/总结归纳/">总结归纳</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/">技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/面试/">面试</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/项目管理/">项目管理</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/D3/">D3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker开源的应用容器引擎/">Docker开源的应用容器引擎</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6探索/">ES6探索</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown操作/">Markdown操作</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nodejs/">Nodejs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sublime-text操作/">Sublime text操作</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Weex/">Weex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/atom操作/">atom操作</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/express-mysql/">express+mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/express-mysql百度新闻/">express+mysql百度新闻</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gitConfig/">gitConfig</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/glup-bower/">glup+bower</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/less/">less</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm命令/">npm命令</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webstrom操作/">webstrom操作</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端面试/">前端面试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正则/">正则</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/轮播/">轮播</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/项目管理/">项目管理</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/D3/" style="font-size: 10px;">D3</a> <a href="/tags/Docker开源的应用容器引擎/" style="font-size: 10px;">Docker开源的应用容器引擎</a> <a href="/tags/ES6探索/" style="font-size: 10px;">ES6探索</a> <a href="/tags/Markdown操作/" style="font-size: 10px;">Markdown操作</a> <a href="/tags/Nodejs/" style="font-size: 10px;">Nodejs</a> <a href="/tags/Sublime-text操作/" style="font-size: 10px;">Sublime text操作</a> <a href="/tags/Weex/" style="font-size: 10px;">Weex</a> <a href="/tags/atom操作/" style="font-size: 10px;">atom操作</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/express-mysql/" style="font-size: 10px;">express+mysql</a> <a href="/tags/express-mysql百度新闻/" style="font-size: 10px;">express+mysql百度新闻</a> <a href="/tags/gitConfig/" style="font-size: 10px;">gitConfig</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/glup-bower/" style="font-size: 10px;">glup+bower</a> <a href="/tags/less/" style="font-size: 10px;">less</a> <a href="/tags/npm命令/" style="font-size: 10px;">npm命令</a> <a href="/tags/react/" style="font-size: 10px;">react</a> <a href="/tags/vue/" style="font-size: 20px;">vue</a> <a href="/tags/webstrom操作/" style="font-size: 10px;">webstrom操作</a> <a href="/tags/前端面试/" style="font-size: 15px;">前端面试</a> <a href="/tags/总结/" style="font-size: 10px;">总结</a> <a href="/tags/正则/" style="font-size: 10px;">正则</a> <a href="/tags/轮播/" style="font-size: 10px;">轮播</a> <a href="/tags/项目管理/" style="font-size: 10px;">项目管理</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/08/04/vue10个开发技巧/">vue10个开发技巧</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/08/vue基础及项目实战/">vue基础及项目实战</a>
+          </li>
+        
+          <li>
+            <a href="/2019/06/21/D3绘制图表/">D3绘制图表</a>
+          </li>
+        
+          <li>
+            <a href="/2019/06/21/weex框架学习/">weex框架学习</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/21/项目时间管理/">项目时间管理</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+      <div class="widget-box">
+    <h3 class="widget-title">友链</h3>
+    <div class="widget">
+      
+        <a style="display: block;" href="https://github.com/xupeihong" title target="_blank">前途光明</a>
+      
+    </div>
+  </div>
+
+  
+</aside>
+      </div>
+      <footer id="footer">
+  <div class="foot-box global-width">
+    &copy; 2020 hongye &nbsp;&nbsp;
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span id="busuanzi_container_site_pv">红叶是第<span id="busuanzi_value_site_pv"></span>个访客</span>
+  </div>
+</footer>
+      <script src="https://code.jquery.com/jquery-2.0.3.min.js"></script>
+<script>
+if (!window.jQuery) {
+var script = document.createElement('script');
+script.src = "/js/jquery-2.0.3.min.js";
+document.body.write(script);
+}
+</script>
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+    </div>
+    <nav id="mobile-nav" class="mobile-nav-box">
+  <div class="mobile-nav-img mobile-nav-top"></div>
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="https://github.com/xupeihong" class="mobile-nav-link">穿梭</a>
+  
+    <a href="/mood" class="mobile-nav-link">心情</a>
+  
+    <a href="/pda" class="mobile-nav-link">手账</a>
+  
+    <a href="/negative" class="mobile-nav-link">暗黑</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+  <div class="mobile-nav-img  mobile-nav-bottom"></div>
+</nav>    
+  </div>
+</body>
+</html>

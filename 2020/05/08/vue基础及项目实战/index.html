@@ -10,18 +10,18 @@
   
   
   
-  <meta name="description" content="vue中条件和列表渲染通过修改vuejs中的数组的值方法:1.通过set方法  Vue.set(vm.item,indexOfItem,newValue)2.通过splice方法  vm.items.splice(indexOfItem,1,newValue)">
+  <meta name="description" content="vue中条件和列表渲染12345通过修改vue.js中的数组的值方法:1.通过set方法  Vue.set(vm.item,indexOfItem,newValue)2.通过splice方法  vm.items.splice(indexOfItem,1,newValue) 双向绑定123456//.lazy 修改默认触发事件为change&amp;lt;input v-model.lazy=&amp;quot;m">
 <meta name="keywords" content="vue">
 <meta property="og:type" content="article">
 <meta property="og:title" content="vue基础及项目实战">
 <meta property="og:url" content="https://xupeihong.github.io/2020/05/08/vue基础及项目实战/index.html">
 <meta property="og:site_name" content="红叶知秋">
-<meta property="og:description" content="vue中条件和列表渲染通过修改vuejs中的数组的值方法:1.通过set方法  Vue.set(vm.item,indexOfItem,newValue)2.通过splice方法  vm.items.splice(indexOfItem,1,newValue)">
+<meta property="og:description" content="vue中条件和列表渲染12345通过修改vue.js中的数组的值方法:1.通过set方法  Vue.set(vm.item,indexOfItem,newValue)2.通过splice方法  vm.items.splice(indexOfItem,1,newValue) 双向绑定123456//.lazy 修改默认触发事件为change&amp;lt;input v-model.lazy=&amp;quot;m">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-05-08T16:02:28.944Z">
+<meta property="og:updated_time" content="2020-06-01T02:33:12.922Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vue基础及项目实战">
-<meta name="twitter:description" content="vue中条件和列表渲染通过修改vuejs中的数组的值方法:1.通过set方法  Vue.set(vm.item,indexOfItem,newValue)2.通过splice方法  vm.items.splice(indexOfItem,1,newValue)">
+<meta name="twitter:description" content="vue中条件和列表渲染12345通过修改vue.js中的数组的值方法:1.通过set方法  Vue.set(vm.item,indexOfItem,newValue)2.通过splice方法  vm.items.splice(indexOfItem,1,newValue) 双向绑定123456//.lazy 修改默认触发事件为change&amp;lt;input v-model.lazy=&amp;quot;m">
   
     <link rel="alternate" href="/atom.xml" title="红叶知秋" type="application/atom+xml">
   
@@ -99,7 +99,12 @@
     
     <div class="article-content article-content-cloud" itemprop="articleBody">
       
-        <h3 id="vue中条件和列表渲染"><a href="#vue中条件和列表渲染" class="headerlink" title="vue中条件和列表渲染"></a>vue中条件和列表渲染</h3><p>通过修改vuejs中的数组的值方法:<br>1.通过set方法<br>  Vue.set(vm.item,indexOfItem,newValue)<br>2.通过splice方法<br>  vm.items.splice(indexOfItem,1,newValue)</p>
+        <h3 id="vue中条件和列表渲染"><a href="#vue中条件和列表渲染" class="headerlink" title="vue中条件和列表渲染"></a>vue中条件和列表渲染</h3><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">通过修改vue.js中的数组的值方法:</span><br><span class="line">1.通过set方法</span><br><span class="line">  Vue.set(vm.item,indexOfItem,newValue)</span><br><span class="line">2.通过splice方法</span><br><span class="line">  vm.items.splice(indexOfItem,1,newValue)</span><br></pre></td></tr></table></figure></div>
+<p>双向绑定<br><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//.lazy 修改默认触发事件为change</span><br><span class="line">&lt;input v-model.lazy=&quot;msg&quot;&gt;</span><br><span class="line">//.number将输入的值转化为数字类型</span><br><span class="line">&lt;input v-model.number=&quot;age&quot; type=&quot;number&quot;&gt;</span><br><span class="line">//.trim去掉用户输入的收尾空格</span><br><span class="line">&lt;input v-model.trim=&quot;msg&quot;&gt;</span><br></pre></td></tr></table></figure></div></p>
+<a id="more"></a>
+<p>特殊情况<br>在不使用props和$emit来进行传值的时候，可以使用$ref来获取子组件的内容</p>
+<pre><code>this.$refs.listItem.childComponentFunction();
+</code></pre><p>子组件获取父组件的内容也是能通过$refs.parent.parentComponentFunction();</p>
 
       
     </div>
@@ -113,6 +118,15 @@
     
 <nav id="article-nav">
   <div class="article-nav-block">
+    
+      <a href="/2020/08/04/vue10个开发技巧/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption"></strong>
+        <div class="article-nav-title">
+          
+            vue10个开发技巧
+          
+        </div>
+      </a>
     
   </div>
   <div class="article-nav-block">
@@ -188,7 +202,7 @@ gitment.render('gitmentContainer')
   <div class="widget-box">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/D3/" style="font-size: 10px;">D3</a> <a href="/tags/Docker开源的应用容器引擎/" style="font-size: 10px;">Docker开源的应用容器引擎</a> <a href="/tags/ES6探索/" style="font-size: 10px;">ES6探索</a> <a href="/tags/Markdown操作/" style="font-size: 10px;">Markdown操作</a> <a href="/tags/Nodejs/" style="font-size: 10px;">Nodejs</a> <a href="/tags/Sublime-text操作/" style="font-size: 10px;">Sublime text操作</a> <a href="/tags/Weex/" style="font-size: 10px;">Weex</a> <a href="/tags/atom操作/" style="font-size: 10px;">atom操作</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/express-mysql/" style="font-size: 10px;">express+mysql</a> <a href="/tags/express-mysql百度新闻/" style="font-size: 10px;">express+mysql百度新闻</a> <a href="/tags/gitConfig/" style="font-size: 10px;">gitConfig</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/glup-bower/" style="font-size: 10px;">glup+bower</a> <a href="/tags/less/" style="font-size: 10px;">less</a> <a href="/tags/npm命令/" style="font-size: 10px;">npm命令</a> <a href="/tags/react/" style="font-size: 10px;">react</a> <a href="/tags/vue/" style="font-size: 20px;">vue</a> <a href="/tags/webstrom操作/" style="font-size: 10px;">webstrom操作</a> <a href="/tags/前端面试/" style="font-size: 20px;">前端面试</a> <a href="/tags/总结/" style="font-size: 10px;">总结</a> <a href="/tags/正则/" style="font-size: 10px;">正则</a> <a href="/tags/轮播/" style="font-size: 10px;">轮播</a> <a href="/tags/项目管理/" style="font-size: 10px;">项目管理</a>
+      <a href="/tags/D3/" style="font-size: 10px;">D3</a> <a href="/tags/Docker开源的应用容器引擎/" style="font-size: 10px;">Docker开源的应用容器引擎</a> <a href="/tags/ES6探索/" style="font-size: 10px;">ES6探索</a> <a href="/tags/Markdown操作/" style="font-size: 10px;">Markdown操作</a> <a href="/tags/Nodejs/" style="font-size: 10px;">Nodejs</a> <a href="/tags/Sublime-text操作/" style="font-size: 10px;">Sublime text操作</a> <a href="/tags/Weex/" style="font-size: 10px;">Weex</a> <a href="/tags/atom操作/" style="font-size: 10px;">atom操作</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/express-mysql/" style="font-size: 10px;">express+mysql</a> <a href="/tags/express-mysql百度新闻/" style="font-size: 10px;">express+mysql百度新闻</a> <a href="/tags/gitConfig/" style="font-size: 10px;">gitConfig</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/glup-bower/" style="font-size: 10px;">glup+bower</a> <a href="/tags/less/" style="font-size: 10px;">less</a> <a href="/tags/npm命令/" style="font-size: 10px;">npm命令</a> <a href="/tags/react/" style="font-size: 10px;">react</a> <a href="/tags/vue/" style="font-size: 20px;">vue</a> <a href="/tags/webstrom操作/" style="font-size: 10px;">webstrom操作</a> <a href="/tags/前端面试/" style="font-size: 15px;">前端面试</a> <a href="/tags/总结/" style="font-size: 10px;">总结</a> <a href="/tags/正则/" style="font-size: 10px;">正则</a> <a href="/tags/轮播/" style="font-size: 10px;">轮播</a> <a href="/tags/项目管理/" style="font-size: 10px;">项目管理</a>
     </div>
   </div>
 
@@ -197,7 +211,7 @@ gitment.render('gitmentContainer')
   <div class="widget-box">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li></ul>
     </div>
   </div>
 
@@ -207,6 +221,10 @@ gitment.render('gitmentContainer')
     <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2020/08/04/vue10个开发技巧/">vue10个开发技巧</a>
+          </li>
         
           <li>
             <a href="/2020/05/08/vue基础及项目实战/">vue基础及项目实战</a>
@@ -222,10 +240,6 @@ gitment.render('gitmentContainer')
         
           <li>
             <a href="/2019/02/21/项目时间管理/">项目时间管理</a>
-          </li>
-        
-          <li>
-            <a href="/2018/06/12/学习总结/">学习总结</a>
           </li>
         
       </ul>

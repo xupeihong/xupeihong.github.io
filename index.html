@@ -61,6 +61,54 @@
       <div id="middlecontent" title class="global-width sidebar-right">
         <section id="main">
   
+    <article id="post-vue10个开发技巧" class="article global-container article-type-post" itemscope itemprop="blogPost">
+  
+    <header class="article-header">
+      
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/04/vue10个开发技巧/">vue10个开发技巧</a>
+    </h1>
+  
+
+    </header>
+  
+  <div class="article-meta">
+    <a href="/2020/08/04/vue10个开发技巧/" class="article-date">
+  <time datetime="2020-08-04T06:08:07.000Z" itemprop="datePublished">2020-08-04</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+  </div>
+
+    
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li></ul>
+
+  </div>
+  
+
+  <div class="article-inner">
+    
+    <div class="article-content article-content-cloud" itemprop="articleBody">
+      
+        <h3 id="优雅更新props值"><a href="#优雅更新props值" class="headerlink" title="优雅更新props值"></a>优雅更新props值</h3><p><code>child.vue  1.直接通过props，$emit修改值</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">export defalut&#123;</span><br><span class="line">  props:&#123;</span><br><span class="line">    title:String</span><br><span class="line">  &#125;,</span><br><span class="line">  methods:&#123;</span><br><span class="line">    changeTitle()&#123;</span><br><span class="line">      this.$emit(&apos;change-title&apos;,&apos;hello&apos;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="parent-vue"><a href="#parent-vue" class="headerlink" title="parent.vue"></a>parent.vue</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;child :title=&apos;title&apos; @change-title=&quot;changeTitle&quot;&gt;&lt;/child&gt;</span><br><span class="line">export defalut&#123;</span><br><span class="line">  data()&#123;</span><br><span class="line">    return&#123;</span><br><span class="line">      title:&apos;原标题&apos;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods:&#123;</span><br><span class="line">    changeTitle(title)&#123;</span><br><span class="line">      this.title=title;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>2.但如果想单纯的更新props，没有其他操作可以使用sync修饰</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">parent.vue</span><br><span class="line">&lt;child :title.sync=&apos;title&apos;&gt;</span><br><span class="line">    &lt;span&gt;&#123;&#123;title&#125;&#125;&lt;/span&gt;</span><br><span class="line">&lt;/child&gt;</span><br><span class="line">child.vue</span><br><span class="line">&lt;input @blur=&quot;changeTitle&gt;</span><br><span class="line">&lt;slot&gt;&lt;/slot&gt;</span><br><span class="line">export defalut&#123;</span><br><span class="line">  props:&#123;</span><br><span class="line">    title:String</span><br><span class="line">  &#125;</span><br><span class="line">  methods:&#123;</span><br><span class="line">    changeTitle(e)&#123;</span><br><span class="line">      this.$emit(&apos;update:title&apos;,e.target.value)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+        
+          <p class="article-more-link">
+            <a href="/2020/08/04/vue10个开发技巧/#more">阅读全文</a>
+          </p>
+        
+      
+    </div>
+    
+  </div>
+  
+  
+</article>
+
+  
     <article id="post-vue基础及项目实战" class="article global-container article-type-post" itemscope itemprop="blogPost">
   
     <header class="article-header">
@@ -92,8 +140,13 @@
     
     <div class="article-content article-content-cloud" itemprop="articleBody">
       
-        <h3 id="vue中条件和列表渲染"><a href="#vue中条件和列表渲染" class="headerlink" title="vue中条件和列表渲染"></a>vue中条件和列表渲染</h3><p>通过修改vuejs中的数组的值方法:<br>1.通过set方法<br>  Vue.set(vm.item,indexOfItem,newValue)<br>2.通过splice方法<br>  vm.items.splice(indexOfItem,1,newValue)</p>
-
+        <h3 id="vue中条件和列表渲染"><a href="#vue中条件和列表渲染" class="headerlink" title="vue中条件和列表渲染"></a>vue中条件和列表渲染</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">通过修改vue.js中的数组的值方法:</span><br><span class="line">1.通过set方法</span><br><span class="line">  Vue.set(vm.item,indexOfItem,newValue)</span><br><span class="line">2.通过splice方法</span><br><span class="line">  vm.items.splice(indexOfItem,1,newValue)</span><br></pre></td></tr></table></figure>
+<p>双向绑定<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//.lazy 修改默认触发事件为change</span><br><span class="line">&lt;input v-model.lazy=&quot;msg&quot;&gt;</span><br><span class="line">//.number将输入的值转化为数字类型</span><br><span class="line">&lt;input v-model.number=&quot;age&quot; type=&quot;number&quot;&gt;</span><br><span class="line">//.trim去掉用户输入的收尾空格</span><br><span class="line">&lt;input v-model.trim=&quot;msg&quot;&gt;</span><br></pre></td></tr></table></figure></p>
+        
+          <p class="article-more-link">
+            <a href="/2020/05/08/vue基础及项目实战/#more">阅读全文</a>
+          </p>
+        
       
     </div>
     
@@ -477,55 +530,6 @@
 </article>
 
   
-    <article id="post-atom常用插件" class="article global-container article-type-post" itemscope itemprop="blogPost">
-  
-    <header class="article-header">
-      
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/30/atom常用插件/">atom常用插件</a>
-    </h1>
-  
-
-    </header>
-  
-  <div class="article-meta">
-    <a href="/2017/10/30/atom常用插件/" class="article-date">
-  <time datetime="2017-10-29T16:06:56.000Z" itemprop="datePublished">2017-10-30</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/技术/">技术</a>
-  </div>
-
-    
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/atom操作/">atom操作</a></li></ul>
-
-  </div>
-  
-
-  <div class="article-inner">
-    
-    <div class="article-content article-content-cloud" itemprop="articleBody">
-      
-        <p><code>1.simplified-chinese-menu</code><br>Atom的简体中文语言包，完整汉化，兼容所有已发布的版本Atom。</p>
-<p><code>2.
-tree-view-finder</code><br>左边菜单栏显示方式，类似Mac OS下的finder。</p>
-<p><code>3.minimap</code><br>类似sublim text右边的代码缩略图。<br><code>4.linter和linter-jshint</code><br>该插件是用jshint来检查代码，想必大家都听说过jshint代码检查工具，它有一个配置文件.jshintrc，这个文件告诉jshint执行的检查规则。通过jshint能发现代码中存在的问题，可以及时避免bug的发生。linter-jshint插件基于atom规则来使用jshint，该插件可以在项目根目录下新建一个.jshintrc来告诉检查规则，也可以不用创建此文件来进行代码检查。<br>注意：linter-jshint是依赖linter插件来使用的，也就是说必须先安装linter插件；因为linter是一个粗糙的检查，有很多针对专门项的代码检查，如linter-csslint、linter-php等等<br><code>5.linter-js-standard</code><br>用来使javascript代码格式化。<br><code>6.git-plus</code><br>提供git版本控制操作的命令，个人感觉不是很好用，还是terminal比较习惯。<br>
-        
-          </p><p class="article-more-link">
-            <a href="/2017/10/30/atom常用插件/#more">阅读全文</a>
-          </p>
-        
-      
-    </div>
-    
-  </div>
-  
-  
-</article>
-
-  
 
 
   <nav id="page-nav">
@@ -577,7 +581,7 @@ tree-view-finder</code><br>左边菜单栏显示方式，类似Mac OS下的finde
   <div class="widget-box">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/D3/" style="font-size: 10px;">D3</a> <a href="/tags/Docker开源的应用容器引擎/" style="font-size: 10px;">Docker开源的应用容器引擎</a> <a href="/tags/ES6探索/" style="font-size: 10px;">ES6探索</a> <a href="/tags/Markdown操作/" style="font-size: 10px;">Markdown操作</a> <a href="/tags/Nodejs/" style="font-size: 10px;">Nodejs</a> <a href="/tags/Sublime-text操作/" style="font-size: 10px;">Sublime text操作</a> <a href="/tags/Weex/" style="font-size: 10px;">Weex</a> <a href="/tags/atom操作/" style="font-size: 10px;">atom操作</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/express-mysql/" style="font-size: 10px;">express+mysql</a> <a href="/tags/express-mysql百度新闻/" style="font-size: 10px;">express+mysql百度新闻</a> <a href="/tags/gitConfig/" style="font-size: 10px;">gitConfig</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/glup-bower/" style="font-size: 10px;">glup+bower</a> <a href="/tags/less/" style="font-size: 10px;">less</a> <a href="/tags/npm命令/" style="font-size: 10px;">npm命令</a> <a href="/tags/react/" style="font-size: 10px;">react</a> <a href="/tags/vue/" style="font-size: 20px;">vue</a> <a href="/tags/webstrom操作/" style="font-size: 10px;">webstrom操作</a> <a href="/tags/前端面试/" style="font-size: 20px;">前端面试</a> <a href="/tags/总结/" style="font-size: 10px;">总结</a> <a href="/tags/正则/" style="font-size: 10px;">正则</a> <a href="/tags/轮播/" style="font-size: 10px;">轮播</a> <a href="/tags/项目管理/" style="font-size: 10px;">项目管理</a>
+      <a href="/tags/D3/" style="font-size: 10px;">D3</a> <a href="/tags/Docker开源的应用容器引擎/" style="font-size: 10px;">Docker开源的应用容器引擎</a> <a href="/tags/ES6探索/" style="font-size: 10px;">ES6探索</a> <a href="/tags/Markdown操作/" style="font-size: 10px;">Markdown操作</a> <a href="/tags/Nodejs/" style="font-size: 10px;">Nodejs</a> <a href="/tags/Sublime-text操作/" style="font-size: 10px;">Sublime text操作</a> <a href="/tags/Weex/" style="font-size: 10px;">Weex</a> <a href="/tags/atom操作/" style="font-size: 10px;">atom操作</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/express-mysql/" style="font-size: 10px;">express+mysql</a> <a href="/tags/express-mysql百度新闻/" style="font-size: 10px;">express+mysql百度新闻</a> <a href="/tags/gitConfig/" style="font-size: 10px;">gitConfig</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/glup-bower/" style="font-size: 10px;">glup+bower</a> <a href="/tags/less/" style="font-size: 10px;">less</a> <a href="/tags/npm命令/" style="font-size: 10px;">npm命令</a> <a href="/tags/react/" style="font-size: 10px;">react</a> <a href="/tags/vue/" style="font-size: 20px;">vue</a> <a href="/tags/webstrom操作/" style="font-size: 10px;">webstrom操作</a> <a href="/tags/前端面试/" style="font-size: 15px;">前端面试</a> <a href="/tags/总结/" style="font-size: 10px;">总结</a> <a href="/tags/正则/" style="font-size: 10px;">正则</a> <a href="/tags/轮播/" style="font-size: 10px;">轮播</a> <a href="/tags/项目管理/" style="font-size: 10px;">项目管理</a>
     </div>
   </div>
 
@@ -586,7 +590,7 @@ tree-view-finder</code><br>左边菜单栏显示方式，类似Mac OS下的finde
   <div class="widget-box">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li></ul>
     </div>
   </div>
 
@@ -596,6 +600,10 @@ tree-view-finder</code><br>左边菜单栏显示方式，类似Mac OS下的finde
     <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2020/08/04/vue10个开发技巧/">vue10个开发技巧</a>
+          </li>
         
           <li>
             <a href="/2020/05/08/vue基础及项目实战/">vue基础及项目实战</a>
@@ -611,10 +619,6 @@ tree-view-finder</code><br>左边菜单栏显示方式，类似Mac OS下的finde
         
           <li>
             <a href="/2019/02/21/项目时间管理/">项目时间管理</a>
-          </li>
-        
-          <li>
-            <a href="/2018/06/12/学习总结/">学习总结</a>
           </li>
         
       </ul>
